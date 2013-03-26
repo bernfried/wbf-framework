@@ -1,0 +1,451 @@
+<config>
+	<pm-objects>
+		<pm-object name="budcbasket">
+			<attribute-path>profile.budcenter.basket</attribute-path>
+			<attribute-separator>|</attribute-separator>
+			<key-value-separator>#</key-value-separator>
+			<operations>
+				<operation name="showItem" type="pmo"> 
+				    <classpath>de.webertise.ds.manager.profilemgr.operations.multivalueattr.ShowItemOperation</classpath>
+					<input-parameters>
+						<input-parameter name="id" persist="false" type="string">
+							<standard-value></standard-value>
+							<mandatory>true</mandatory>
+							<url-encoding>none</url-encoding>
+							<html-encoding>none</html-encoding>
+						</input-parameter>
+					</input-parameters>
+					<output-parameters>
+						<output-parameter name="id" property="id">
+							<url-encoding>none</url-encoding>
+							<as-cdata>false</as-cdata>
+						</output-parameter>
+						<output-parameter name="title" property="title">
+							<url-encoding>none</url-encoding>
+							<as-cdata>true</as-cdata>
+						</output-parameter>
+						<output-parameter name="price" property="price">
+							<url-encoding>none</url-encoding>
+							<as-cdata>false</as-cdata>
+						</output-parameter>
+						<output-parameter name="amount" property="amount">
+							<url-encoding>none</url-encoding>
+							<as-cdata>false</as-cdata>
+						</output-parameter>
+					</output-parameters>
+				</operation>
+				<operation name="addItem" type="pmo">
+				    <classpath>de.webertise.ds.manager.profilemgr.operations.multivalueattr.AddItemOperation</classpath>
+					<input-parameters>
+						<input-parameter name="id" persist="true" type="string">
+							<standard-value></standard-value>
+							<mandatory>true</mandatory>
+							<url-encoding>none</url-encoding>
+							<html-encoding>none</html-encoding>
+						</input-parameter>
+						<input-parameter name="title" persist="true" type="string">
+							<standard-value></standard-value>
+							<mandatory>true</mandatory>
+							<url-encoding>none</url-encoding>
+							<html-encoding>none</html-encoding>
+						</input-parameter>
+						<input-parameter name="price" persist="true" type="string">
+							<standard-value></standard-value>
+							<mandatory>true</mandatory>
+							<url-encoding>none</url-encoding>
+							<html-encoding>none</html-encoding>
+						</input-parameter>
+						<input-parameter name="amount" persist="true" type="number">
+							<standard-value>1</standard-value>
+							<mandatory>true</mandatory>
+							<url-encoding>none</url-encoding>
+							<html-encoding>none</html-encoding>
+						</input-parameter>
+						<input-parameter name="limit" persist="false" type="number">
+							<standard-value>0</standard-value>
+							<mandatory>false</mandatory>
+							<url-encoding>none</url-encoding>
+							<html-encoding>none</html-encoding>
+						</input-parameter>
+						<input-parameter name="removeLast" persist="false" type="boolean">
+							<standard-value>false</standard-value>
+							<mandatory>false</mandatory>
+							<url-encoding>none</url-encoding>
+							<html-encoding>none</html-encoding>
+						</input-parameter>
+						<input-parameter name="addToTop" persist="false" type="boolean">
+							<standard-value>true</standard-value>
+							<mandatory>false</mandatory>
+							<url-encoding>none</url-encoding>
+							<html-encoding>none</html-encoding>
+						</input-parameter>
+					</input-parameters>
+				</operation>
+				<operation name="showAllItems" type="pmo"> 
+				    <classpath>de.webertise.ds.manager.profilemgr.operations.multivalueattr.ShowAllItemsOperation</classpath>
+					<output-parameters>
+						<output-parameter name="id" property="id">
+							<url-encoding>none</url-encoding>
+							<as-cdata>false</as-cdata>
+						</output-parameter>
+						<output-parameter name="title" property="title">
+							<url-encoding>none</url-encoding>
+							<as-cdata>true</as-cdata>
+						</output-parameter>
+						<output-parameter name="price" property="price">
+							<url-encoding>none</url-encoding>
+							<as-cdata>false</as-cdata>
+						</output-parameter>
+						<output-parameter name="amount" property="amount">
+							<url-encoding>none</url-encoding>
+							<as-cdata>false</as-cdata>
+						</output-parameter>
+					</output-parameters>
+				</operation>
+				<operation name="removeItem" type="pmo">
+				    <classpath>de.webertise.ds.manager.profilemgr.operations.multivalueattr.RemoveItemOperation</classpath>
+					<input-parameters>
+						<input-parameter name="id" persist="false" type="string">
+							<standard-value></standard-value>
+							<mandatory>true</mandatory>
+							<url-encoding>none</url-encoding>
+							<html-encoding>none</html-encoding>
+						</input-parameter>
+					</input-parameters>
+				</operation>
+				<operation name="removeAllItems" type="pmo">
+				    <classpath>de.webertise.ds.manager.profilemgr.operations.multivalueattr.RemoveAllItemsOperation</classpath>
+				</operation>
+				<operation name="moveItem">
+				    <classpath>de.webertise.ds.manager.profilemgr.operations.multivalueattr.MoveItemOperation</classpath>
+					<input-parameters>
+						<input-parameter name="id" persist="false" type="string">
+							<standard-value></standard-value>
+							<mandatory>true</mandatory>
+							<url-encoding>none</url-encoding>
+							<html-encoding>none</html-encoding>
+						</input-parameter>
+						<input-parameter name="position" persist="false" type="string">
+						    <allowed-values>top,bottom,up,down</allowed-values>
+							<standard-value></standard-value>
+							<mandatory>true</mandatory>
+							<url-encoding>none</url-encoding>
+							<html-encoding>none</html-encoding>
+						</input-parameter>
+					</input-parameters>
+				</operation>
+				<operation name="checkItem" type="pmo">
+				    <classpath>de.webertise.ds.manager.profilemgr.operations.multivalueattr.CheckItemOperation</classpath>
+					<input-parameters>
+						<input-parameter name="id" persist="false" type="string">
+							<standard-value></standard-value>
+							<mandatory>true</mandatory>
+							<url-encoding>none</url-encoding>
+							<html-encoding>none</html-encoding>
+						</input-parameter>
+					</input-parameters>
+				</operation>
+				<operation name="calcTotal" type="pmo">
+				    <classpath>ch.mobiliar.mobich.budcenter.profilemgr.operations.CalcTotalOperation</classpath>
+				</operation>
+				<operation name="getBasketAsHtml" type="pmo">
+				    <classpath>ch.mobiliar.mobich.budcenter.profilemgr.operations.GetBasketAsHtmlOperation</classpath>
+					<input-parameters>
+						<input-parameter name="colAmount" persist="false" type="string">
+							<standard-value>Menge</standard-value>
+							<mandatory>true</mandatory>
+							<url-encoding>none</url-encoding>
+							<html-encoding>none</html-encoding>
+						</input-parameter>
+						<input-parameter name="colTitle" persist="false" type="string">
+							<standard-value>Titel</standard-value>
+							<mandatory>true</mandatory>
+							<url-encoding>none</url-encoding>
+							<html-encoding>none</html-encoding>
+						</input-parameter>
+						<input-parameter name="colPrice" persist="false" type="string">
+							<standard-value>Preis</standard-value>
+							<mandatory>true</mandatory>
+							<url-encoding>none</url-encoding>
+							<html-encoding>none</html-encoding>
+						</input-parameter>
+						<input-parameter name="rowTotal" persist="false" type="string">
+							<standard-value>Total</standard-value>
+							<mandatory>true</mandatory>
+							<url-encoding>none</url-encoding>
+							<html-encoding>none</html-encoding>
+						</input-parameter>
+					</input-parameters>
+				</operation>
+			</operations>
+			<validations>
+				<validation name="id">
+					<min-length>1</min-length>
+					<max-length>50</max-length>
+					<reg-expr></reg-expr>
+				</validation>
+			</validations>
+		</pm-object>
+		
+		<pm-object name="budccustomer">
+			<attribute-path>profile.budcenter.customer</attribute-path>
+			<attribute-separator>|</attribute-separator>
+			<key-value-separator>#</key-value-separator>
+			<operations>
+				<operation name="showItem" type="pmo"> 
+				    <classpath>de.webertise.ds.manager.profilemgr.operations.multivalueattr.ShowItemOperation</classpath>
+					<input-parameters>
+						<input-parameter name="id" persist="false" type="string">
+							<standard-value></standard-value>
+							<mandatory>true</mandatory>
+							<url-encoding>none</url-encoding>
+							<html-encoding>none</html-encoding>
+						</input-parameter>
+					</input-parameters>
+					<output-parameters>
+						<output-parameter name="id" property="id">
+							<url-encoding>none</url-encoding>
+							<as-cdata>false</as-cdata>
+						</output-parameter>
+						<output-parameter name="greeting" property="greeting">
+							<url-encoding>none</url-encoding>
+							<as-cdata>false</as-cdata>
+						</output-parameter>
+						<output-parameter name="firstname" property="firstname">
+							<url-encoding>none</url-encoding>
+							<as-cdata>true</as-cdata>
+						</output-parameter>
+						<output-parameter name="lastname" property="lastname">
+							<url-encoding>none</url-encoding>
+							<as-cdata>true</as-cdata>
+						</output-parameter>
+						<output-parameter name="street" property="street">
+							<url-encoding>none</url-encoding>
+							<as-cdata>true</as-cdata>
+						</output-parameter>
+						<output-parameter name="zip" property="zip">
+							<url-encoding>none</url-encoding>
+							<as-cdata>true</as-cdata>
+						</output-parameter>
+						<output-parameter name="city" property="city">
+							<url-encoding>none</url-encoding>
+							<as-cdata>true</as-cdata>
+						</output-parameter>
+						<output-parameter name="message" property="message">
+							<url-encoding>none</url-encoding>
+							<as-cdata>true</as-cdata>
+						</output-parameter>
+						<output-parameter name="agb" property="agb">
+							<url-encoding>none</url-encoding>
+							<as-cdata>false</as-cdata>
+						</output-parameter>
+						<output-parameter name="email" property="email">
+							<url-encoding>none</url-encoding>
+							<as-cdata>true</as-cdata>
+						</output-parameter>
+					</output-parameters>
+				</operation>
+				<operation name="addItem" type="pmo">
+				    <classpath>de.webertise.ds.manager.profilemgr.operations.multivalueattr.AddItemOperation</classpath>
+					<input-parameters>
+						<input-parameter name="id" persist="true" type="string">
+							<standard-value></standard-value>
+							<mandatory>true</mandatory>
+							<url-encoding>none</url-encoding>
+							<html-encoding>none</html-encoding>
+						</input-parameter>
+						<input-parameter name="greeting" persist="true" type="string">
+							<standard-value></standard-value>
+							<mandatory>true</mandatory>
+							<url-encoding>none</url-encoding>
+							<html-encoding>none</html-encoding>
+						</input-parameter>
+						<input-parameter name="firstname" persist="true" type="string">
+							<standard-value></standard-value>
+							<mandatory>true</mandatory>
+							<url-encoding>none</url-encoding>
+							<html-encoding>none</html-encoding>
+						</input-parameter>
+						<input-parameter name="lastname" persist="true" type="string">
+							<standard-value></standard-value>
+							<mandatory>true</mandatory>
+							<url-encoding>none</url-encoding>
+							<html-encoding>none</html-encoding>
+						</input-parameter>
+						<input-parameter name="street" persist="true" type="string">
+							<standard-value></standard-value>
+							<mandatory>true</mandatory>
+							<url-encoding>none</url-encoding>
+							<html-encoding>none</html-encoding>
+						</input-parameter>
+						<input-parameter name="zip" persist="true" type="string">
+							<standard-value></standard-value>
+							<mandatory>true</mandatory>
+							<url-encoding>none</url-encoding>
+							<html-encoding>none</html-encoding>
+						</input-parameter>
+						<input-parameter name="city" persist="true" type="string">
+							<standard-value></standard-value>
+							<mandatory>true</mandatory>
+							<url-encoding>none</url-encoding>
+							<html-encoding>none</html-encoding>
+						</input-parameter>
+						<input-parameter name="email" persist="true" type="string">
+							<standard-value></standard-value>
+							<mandatory>false</mandatory>
+							<url-encoding>none</url-encoding>
+							<html-encoding>none</html-encoding>
+						</input-parameter>
+						<input-parameter name="message" persist="true" type="string">
+							<standard-value></standard-value>
+							<mandatory>false</mandatory>
+							<url-encoding>none</url-encoding>
+							<html-encoding>none</html-encoding>
+						</input-parameter>
+						<input-parameter name="agb" persist="true" type="string">
+							<standard-value>false</standard-value>
+							<mandatory>true</mandatory>
+							<url-encoding>none</url-encoding>
+							<html-encoding>none</html-encoding>
+						</input-parameter>
+						<input-parameter name="limit" persist="false" type="number">
+							<standard-value>1</standard-value>
+							<mandatory>false</mandatory>
+							<url-encoding>none</url-encoding>
+							<html-encoding>none</html-encoding>
+						</input-parameter>
+						<input-parameter name="removeLast" persist="false" type="boolean">
+							<standard-value>true</standard-value>
+							<mandatory>false</mandatory>
+							<url-encoding>none</url-encoding>
+							<html-encoding>none</html-encoding>
+						</input-parameter>
+						<input-parameter name="addToTop" persist="false" type="boolean">
+							<standard-value>true</standard-value>
+							<mandatory>false</mandatory>
+							<url-encoding>none</url-encoding>
+							<html-encoding>none</html-encoding>
+						</input-parameter>
+					</input-parameters>
+				</operation>
+				<operation name="showAllItems" type="pmo"> 
+				    <classpath>de.webertise.ds.manager.profilemgr.operations.multivalueattr.ShowAllItemsOperation</classpath>
+					<output-parameters>
+						<output-parameter name="id" property="id">
+							<url-encoding>none</url-encoding>
+							<as-cdata>false</as-cdata>
+						</output-parameter>
+						<output-parameter name="greeting" property="greeting">
+							<url-encoding>none</url-encoding>
+							<as-cdata>false</as-cdata>
+						</output-parameter>
+						<output-parameter name="firstname" property="firstname">
+							<url-encoding>none</url-encoding>
+							<as-cdata>true</as-cdata>
+						</output-parameter>
+						<output-parameter name="lastname" property="lastname">
+							<url-encoding>none</url-encoding>
+							<as-cdata>true</as-cdata>
+						</output-parameter>
+						<output-parameter name="street" property="street">
+							<url-encoding>none</url-encoding>
+							<as-cdata>true</as-cdata>
+						</output-parameter>
+						<output-parameter name="zip" property="zip">
+							<url-encoding>none</url-encoding>
+							<as-cdata>true</as-cdata>
+						</output-parameter>
+						<output-parameter name="city" property="city">
+							<url-encoding>none</url-encoding>
+							<as-cdata>true</as-cdata>
+						</output-parameter>
+						<output-parameter name="email" property="email">
+							<url-encoding>none</url-encoding>
+							<as-cdata>true</as-cdata>
+						</output-parameter>
+						<output-parameter name="message" property="message">
+							<url-encoding>none</url-encoding>
+							<as-cdata>true</as-cdata>
+						</output-parameter>
+						<output-parameter name="agb" property="agb">
+							<url-encoding>none</url-encoding>
+							<as-cdata>false</as-cdata>
+						</output-parameter>
+					</output-parameters>
+				</operation>
+				<operation name="removeItem" type="pmo">
+				    <classpath>de.webertise.ds.manager.profilemgr.operations.multivalueattr.RemoveItemOperation</classpath>
+					<input-parameters>
+						<input-parameter name="id" persist="false" type="string">
+							<standard-value></standard-value>
+							<mandatory>true</mandatory>
+							<url-encoding>none</url-encoding>
+							<html-encoding>none</html-encoding>
+						</input-parameter>
+					</input-parameters>
+				</operation>
+				<operation name="removeAllItems" type="pmo">
+				    <classpath>de.webertise.ds.manager.profilemgr.operations.multivalueattr.RemoveAllItemsOperation</classpath>
+				</operation>
+				<operation name="checkItem" type="pmo">
+				    <classpath>de.webertise.ds.manager.profilemgr.operations.multivalueattr.CheckItemOperation</classpath>
+					<input-parameters>
+						<input-parameter name="id" persist="false" type="string">
+							<standard-value></standard-value>
+							<mandatory>true</mandatory>
+							<url-encoding>none</url-encoding>
+							<html-encoding>none</html-encoding>
+						</input-parameter>
+					</input-parameters>
+				</operation>
+			</operations>
+			<validations>
+				<validation name="greeting">
+					<min-length>4</min-length>
+					<max-length>4</max-length>
+					<reg-expr>(Herr|Frau)</reg-expr>
+				</validation>
+				<validation name="firstname">
+					<min-length>1</min-length>
+					<max-length>50</max-length>
+					<reg-expr></reg-expr>
+				</validation>
+				<validation name="lastname">
+					<min-length>1</min-length>
+					<max-length>50</max-length>
+					<reg-expr></reg-expr>
+				</validation>
+				<validation name="street">
+					<min-length>1</min-length>
+					<max-length>50</max-length>
+					<reg-expr></reg-expr>
+				</validation>
+				<validation name="zip">
+					<min-length>1</min-length>
+					<max-length>10</max-length>
+					<reg-expr></reg-expr>
+				</validation>
+				<validation name="city">
+					<min-length>1</min-length>
+					<max-length>50</max-length>
+					<reg-expr></reg-expr>
+				</validation>
+				<validation name="agb">
+					<min-length>4</min-length>
+					<max-length>5</max-length>
+					<reg-expr>(true)</reg-expr>
+				</validation>
+				<validation name="message">
+					<min-length>5</min-length>
+					<max-length>250</max-length>
+					<reg-expr></reg-expr>
+				</validation>
+				<validation name="email">
+					<min-length>1</min-length>
+					<max-length>100</max-length>
+					<reg-expr><![CDATA[[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+(?:[A-Z]{2}|com|org|net|edu|gov|mil|biz|info|mobi|name|aero|asia|jobs|museum|de|it|ch|fr|at)\b]]></reg-expr>
+				</validation>
+			</validations>
+		</pm-object>
+	</pm-objects>
+</config>

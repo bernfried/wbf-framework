@@ -1,0 +1,37 @@
+<config>
+	<targets>
+		<target name="news1">
+			<constraint>
+				<bracket parent="0" id="1" log-op="NONE">
+					<part attr="news.channel" iparam="channel" type="multi" var-type="string" separator="," comp-op="EQ" log-op="OR" />
+				</bracket>
+				<bracket parent="0" id="2" log-op="OR">
+					<part attr="news.type" iparam="type" type="single" var-type="number" comp-op="EQ"/>
+				</bracket>
+				<bracket parent="0" id="3" log-op="OR">
+					<bracket parent="3" id="4" log-op="NONE">
+						<part attr="news.roles" iparam="roles" type="multi" var-type="string" separator="," comp-op="CONTAINS" log-op="OR"/>
+					</bracket>
+					<bracket parent="3" id="5" log-op="AND">
+						<part attr="news.lists" iparam="lists" type="multi" var-type="string" separator="," comp-op="CONTAINS" log-op="OR"/>
+					</bracket>
+					<bracket parent="3" id="6" log-op="NONE">
+						<bracket parent="6" id="7" log-op="None">
+							<part attr="news.other1" iparam="other1" type="multi" var-type="string" separator="," comp-op="CONTAINS" log-op="OR"/>
+						</bracket>
+						<bracket parent="6" id="8" log-op="OR">
+							<part attr="news.other2" iparam="other2" type="multi" var-type="string" separator="," comp-op="CONTAINS" log-op="OR"/>
+						</bracket>
+					</bracket>
+				</bracket>
+			</constraint>
+		</target>
+		<target name="news2">
+			<constraint>
+				<bracket parent="0" id="1" log-op="NONE">
+					<part attr="news.mainChannel" iparam="channel" type="multi" var-type="string" separator="," comp-op="EQ" log-op="OR" />
+				</bracket>
+			</constraint>
+		</target>
+	</targets>
+</config>

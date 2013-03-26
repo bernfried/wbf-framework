@@ -1,0 +1,227 @@
+<config>
+	<pm-objects>
+		<pm-object name="newsQuery">
+			<operations>
+				<operation name="queryNews" type="tmo">
+				    <classpath>de.webertise.ds.manager.targetmgr.operations.QueryOperation</classpath>
+				    <target>news2</target>
+					<input-parameters>
+						<input-parameter name="project" persist="false" type="string">
+							<mandatory>true</mandatory>
+						</input-parameter>
+						<input-parameter name="group" persist="false" type="string">
+							<mandatory>true</mandatory>
+						</input-parameter>
+						<input-parameter name="locale" persist="false" type="string">
+							<mandatory>true</mandatory>
+						</input-parameter>
+						<input-parameter name="chunksize" persist="false" type="number">
+							<standard-value>10</standard-value>
+							<mandatory>false</mandatory>
+						</input-parameter>
+						<input-parameter name="chunk" persist="false" type="number">
+							<standard-value>1</standard-value>
+							<mandatory>false</mandatory>
+						</input-parameter>
+						<input-parameter name="maxhits" persist="false" type="number">
+							<standard-value>500</standard-value>
+							<mandatory>false</mandatory>
+						</input-parameter>
+						<input-parameter name="sortedby" persist="false" type="string">
+							<standard-value>changedAtSortable</standard-value>
+							<mandatory>false</mandatory>
+						</input-parameter>
+						<input-parameter name="sortorder" persist="false" type="string">
+							<standard-value>asc</standard-value>
+							<mandatory>false</mandatory>
+						</input-parameter>
+						<input-parameter name="db-structure" persist="false" type="string">
+							<mandatory>false</mandatory>
+						</input-parameter>
+						<input-parameter name="attributepath" persist="false" type="string">
+							<standard-value>.</standard-value>
+							<mandatory>false</mandatory>
+						</input-parameter>
+						<input-parameter name="confirm" persist="false" type="string">
+							<standard-value>chunk</standard-value>
+							<mandatory>false</mandatory>
+						</input-parameter>
+						<input-parameter name="item-tag" persist="false" type="string">
+							<standard-value>item</standard-value>
+							<mandatory>false</mandatory>
+						</input-parameter>
+						<input-parameter name="tag" persist="false" type="string">
+							<standard-value>items</standard-value>
+							<mandatory>false</mandatory>
+						</input-parameter>
+						<input-parameter name="channel" persist="false" type="string">
+							<mandatory>true</mandatory>
+						</input-parameter>
+					</input-parameters>
+				</operation>
+			</operations>
+		</pm-object>
+		<pm-object name="favoritePages">
+			<attribute-path>profile.favoritePages</attribute-path>
+			<attribute-separator>|</attribute-separator>
+			<key-value-separator>#</key-value-separator>
+			<operations>
+				<operation name="showItem" type="pmo"> 
+				    <classpath>de.webertise.ds.manager.profilemgr.operations.multivalueattr.ShowItemOperation</classpath>
+					<input-parameters>
+						<input-parameter name="id" persist="false" type="string">
+							<standard-value></standard-value>
+							<mandatory>true</mandatory>
+							<url-encoding>none</url-encoding>
+							<html-encoding>none</html-encoding>
+						</input-parameter>
+					</input-parameters>
+					<output-parameters>
+						<output-parameter name="id" property="id">
+							<url-encoding>none</url-encoding>
+							<as-cdata>false</as-cdata>
+						</output-parameter>
+						<output-parameter name="value" property="value">
+							<url-encoding>none</url-encoding>
+							<as-cdata>true</as-cdata>
+						</output-parameter>
+						<output-parameter name="value-url-encoded" property="value">
+							<url-encoding>encode</url-encoding>
+							<as-cdata>false</as-cdata>
+						</output-parameter>
+						<output-parameter name="name" property="name">
+							<url-encoding>none</url-encoding>
+							<as-cdata>true</as-cdata>
+						</output-parameter>
+						<output-parameter name="createdAt" property="createdAt">
+							<url-encoding>none</url-encoding>
+							<as-cdata>false</as-cdata>
+						</output-parameter>
+					</output-parameters>
+				</operation>
+				<operation name="addItem" type="pmo">
+				    <classpath>de.webertise.ds.manager.profilemgr.operations.multivalueattr.AddItemOperation</classpath>
+					<input-parameters>
+						<input-parameter name="id" persist="true" type="string">
+							<standard-value></standard-value>
+							<mandatory>true</mandatory>
+							<url-encoding>none</url-encoding>
+							<html-encoding>none</html-encoding>
+						</input-parameter>
+						<input-parameter name="name" persist="true" type="string">
+							<standard-value></standard-value>
+							<mandatory>true</mandatory>
+							<url-encoding>none</url-encoding>
+							<html-encoding>none</html-encoding>
+						</input-parameter>
+						<input-parameter name="value" persist="true" type="string">
+							<standard-value></standard-value>
+							<mandatory>true</mandatory>
+							<url-encoding>none</url-encoding>
+							<html-encoding>none</html-encoding>
+						</input-parameter>
+						<input-parameter name="limit" persist="false" type="number">
+							<standard-value>0</standard-value>
+							<mandatory>false</mandatory>
+							<url-encoding>none</url-encoding>
+							<html-encoding>none</html-encoding>
+						</input-parameter>
+						<input-parameter name="removeLast" persist="false" type="boolean">
+							<standard-value>false</standard-value>
+							<mandatory>false</mandatory>
+							<url-encoding>none</url-encoding>
+							<html-encoding>none</html-encoding>
+						</input-parameter>
+						<input-parameter name="addToTop" persist="false" type="boolean">
+							<standard-value>true</standard-value>
+							<mandatory>false</mandatory>
+							<url-encoding>none</url-encoding>
+							<html-encoding>none</html-encoding>
+						</input-parameter>
+					</input-parameters>
+				</operation>
+				<operation name="showAllItems" type="pmo"> 
+				    <classpath>de.webertise.ds.manager.profilemgr.operations.multivalueattr.ShowAllItemsOperation</classpath>
+					<output-parameters>
+						<output-parameter name="id" property="id">
+							<url-encoding>none</url-encoding>
+							<as-cdata>false</as-cdata>
+						</output-parameter>
+						<output-parameter name="value" property="value">
+							<url-encoding>none</url-encoding>
+							<as-cdata>true</as-cdata>
+						</output-parameter>
+						<output-parameter name="value-url-encoded" property="value">
+							<url-encoding>encode</url-encoding>
+							<as-cdata>false</as-cdata>
+						</output-parameter>
+						<output-parameter name="createdAt" property="createdAt">
+							<url-encoding>none</url-encoding>
+							<as-cdata>false</as-cdata>
+						</output-parameter>
+					</output-parameters>
+				</operation>
+				<operation name="removeItem" type="pmo">
+				    <classpath>de.webertise.ds.manager.profilemgr.operations.multivalueattr.RemoveItemOperation</classpath>
+					<input-parameters>
+						<input-parameter name="id" persist="false" type="string">
+							<standard-value></standard-value>
+							<mandatory>true</mandatory>
+							<url-encoding>none</url-encoding>
+							<html-encoding>none</html-encoding>
+						</input-parameter>
+					</input-parameters>
+				</operation>
+				<operation name="removeAllItems" type="pmo">
+				    <classpath>de.webertise.ds.manager.profilemgr.operations.multivalueattr.RemoveAllItemsOperation</classpath>
+				</operation>
+				<operation name="moveItem">
+				    <classpath>de.webertise.ds.manager.profilemgr.operations.multivalueattr.MoveItemOperation</classpath>
+					<input-parameters>
+						<input-parameter name="id" persist="false" type="string">
+							<standard-value></standard-value>
+							<mandatory>true</mandatory>
+							<url-encoding>none</url-encoding>
+							<html-encoding>none</html-encoding>
+						</input-parameter>
+						<input-parameter name="position" persist="false" type="string">
+						    <allowed-values>top,bottom,up,down</allowed-values>
+							<standard-value></standard-value>
+							<mandatory>true</mandatory>
+							<url-encoding>none</url-encoding>
+							<html-encoding>none</html-encoding>
+						</input-parameter>
+					</input-parameters>
+				</operation>
+				<operation name="checkItem" type="pmo">
+				    <classpath>de.webertise.ds.manager.profilemgr.operations.multivalueattr.CheckItemOperation</classpath>
+					<input-parameters>
+						<input-parameter name="id" persist="false" type="string">
+							<standard-value></standard-value>
+							<mandatory>true</mandatory>
+							<url-encoding>none</url-encoding>
+							<html-encoding>none</html-encoding>
+						</input-parameter>
+					</input-parameters>
+				</operation>
+			</operations>
+			<validations>
+				<validation name="id">
+					<min-length>1</min-length>
+					<max-length>50</max-length>
+					<reg-expr></reg-expr>
+				</validation>
+				<validation name="value">
+					<min-length>1</min-length>
+					<max-length>255</max-length>
+					<reg-expr></reg-expr>
+				</validation>
+				<validation name="validDate">
+					<min-length>1</min-length>
+					<max-length>255</max-length>
+					<reg-expr></reg-expr>
+				</validation>
+			</validations>
+		</pm-object>
+	</pm-objects>
+</config>
