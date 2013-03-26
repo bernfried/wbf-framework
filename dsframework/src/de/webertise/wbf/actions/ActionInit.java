@@ -24,15 +24,15 @@ public class ActionInit extends de.webertise.wbf.base.action.AbstractAction {
     String forwardedUrl = request.getHttpServletRequest().getHeader("Forwarded-URL");
     String targetUrl = MasterWeblet.shortcutSetting.checkShortcut(sourceRequestUri, forwardedUrl);
     log.debug(LOG_CATEGORY, "ActionInit - execute: Shortcut targetUrl: '" + targetUrl + "'");
-    if (targetUrl!=null && !targetUrl.equals("")) {
+    if (targetUrl != null && !targetUrl.equals("")) {
       this.setResponseParameter(ActionResponseItem.TARGET_SESSION_TRANSIENT, ActionResponseItem.KEY_SHORTCUT_TARGET_URL, targetUrl, false, false);
       this.setActionForwardName("shortcutPage");
       return true;
     }
-    
+
     // check for referer
     String referer = request.getParameter("wbf.requestctrldata.referer");
-    if (referer!=null && !referer.equals("")) {
+    if (referer != null && !referer.equals("")) {
       // forward to refered page
       this.setActionForwardName("refererPage");
       log.debug(LOG_CATEGORY, "ActionCreateFilter - execute: Current referer is: '" + referer + "'");
@@ -48,7 +48,7 @@ public class ActionInit extends de.webertise.wbf.base.action.AbstractAction {
         this.setActionForwardName("startPage");
       }
     }
-    
+
     return true;
   }
 

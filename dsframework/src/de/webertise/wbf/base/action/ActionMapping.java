@@ -87,13 +87,13 @@ public class ActionMapping {
   public boolean checkUserGroups(String groups) {
     // find the first corresponding group
     if (this.groups != null) {
-      for (int i=0; i<this.groups.length; i++) {
+      for (int i = 0; i < this.groups.length; i++) {
         if (groups.contains("[" + this.groups[i] + "]")) {
           return true;
         }
       }
       return false;
-    }  else {
+    } else {
       return true;
     }
   }
@@ -101,11 +101,11 @@ public class ActionMapping {
   public String getGroupsAsString() {
     String result = "";
     if (this.groups != null) {
-      for (int i=0; i<this.groups.length; i++) {
+      for (int i = 0; i < this.groups.length; i++) {
         result = result + "[" + this.groups[i] + "]";
       }
     }
     return result;
   }
-  
+
 }

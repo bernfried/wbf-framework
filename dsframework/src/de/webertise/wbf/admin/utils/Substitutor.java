@@ -15,17 +15,17 @@ import de.webertise.wbf.base.action.ActionResponseItem;
 public class Substitutor {
 
   // constants
-  private final static String LOG_CATEGORY       = "wbf_weblet";
+  private final static String LOG_CATEGORY         = "wbf_weblet";
 
   // variables
-  private static LogServices         log                = LogServices.getInstance(LOG_CATEGORY);
+  private static LogServices  log                  = LogServices.getInstance(LOG_CATEGORY);
 
-  private static final int TEXT_MODE            = 0;
-  private static final int VAR_MODE             = 1;
-  private static final int IDENTIFY_PREFIX_MODE = 2;
-  private static final int IDENTIFY_SUFFIX_MODE = 3;
-  private static final int CANCEL_PREFIX_MODE   = 4;
-  private static final int CANCEL_SUFFIX_MODE   = 5;
+  private static final int    TEXT_MODE            = 0;
+  private static final int    VAR_MODE             = 1;
+  private static final int    IDENTIFY_PREFIX_MODE = 2;
+  private static final int    IDENTIFY_SUFFIX_MODE = 3;
+  private static final int    CANCEL_PREFIX_MODE   = 4;
+  private static final int    CANCEL_SUFFIX_MODE   = 5;
 
   /**
    * This method replaces all placeholders beginning with prefix and ending with suffix by an value which can be found in valuesMap based on the string between prefix and suffix. e.g. <#test#>

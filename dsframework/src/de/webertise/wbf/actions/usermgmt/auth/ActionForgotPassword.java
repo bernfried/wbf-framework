@@ -9,6 +9,7 @@ package de.webertise.wbf.actions.usermgmt.auth;
 import java.util.Hashtable;
 import java.util.Locale;
 import java.util.Map;
+
 import de.reddot.api.common.content.CoaContent;
 import de.reddot.api.common.content.CoaContentData;
 import de.reddot.api.common.session.CoaSession;
@@ -17,11 +18,11 @@ import de.reddot.api.common.user.CoaUserController;
 import de.reddot.api.web.io.WebletRequest;
 import de.webertise.ds.services.ContentServices;
 import de.webertise.ds.services.DynaMentServices;
+import de.webertise.wbf.actions.ActionConstants;
 import de.webertise.wbf.base.action.ActionResponseItem;
 import de.webertise.wbf.services.FreemarkerEngine;
 import de.webertise.wbf.services.MD5Hash;
 import de.webertise.wbf.weblet.MasterWeblet;
-import de.webertise.wbf.actions.ActionConstants;
 
 /**
  * 
@@ -63,7 +64,6 @@ public class ActionForgotPassword extends de.webertise.wbf.base.action.AbstractA
     return true;
   }
 
-  
   /**
    * Validate Action Request
    */
@@ -133,7 +133,8 @@ public class ActionForgotPassword extends de.webertise.wbf.base.action.AbstractA
         return dmServices.executeMessageDynaMent(session, settings);
 
       } else {
-        log.debug(LOG_CATEGORY, "ActionEditRegistration - sendConfirmationEmail: email body template with name '/templates/emails/confirm-forgot-password.ftl' has no data for locale '" + locale + "'.");
+        log.debug(LOG_CATEGORY, "ActionEditRegistration - sendConfirmationEmail: email body template with name '/templates/emails/confirm-forgot-password.ftl' has no data for locale '" + locale
+            + "'.");
         return false;
       }
     } else {

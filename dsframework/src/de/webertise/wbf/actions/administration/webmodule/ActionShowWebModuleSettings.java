@@ -32,20 +32,20 @@ public class ActionShowWebModuleSettings extends de.webertise.wbf.base.action.Ab
       this.setActionForwardName("nok");
     } else {
       log.debug(LOG_CATEGORY, "ActionShowWebModuleSettings - execute: Reading the Web Module Settings succeeded.");
-      
+
       // fill action response
-      Hashtable<String,String> settings = new Hashtable<String,String>();
+      Hashtable<String, String> settings = new Hashtable<String, String>();
 
       settings.put("actionParameterName", wms.getActionParameterName());
       settings.put("applicationParameterName", wms.getApplicationParameterName());
       settings.put("webModuleParameterName", wms.getWebModuleParameterName());
       settings.put("projectParameterName", wms.getProjectParameterName());
       settings.put("refererPageParameterName", wms.getRefererPageParameterName());
-      
+
       settings.put("defaultApplication", wms.getDefaultApplication());
       settings.put("defaultProject", wms.getDefaultProject());
       settings.put("defaultWebModule", wms.getDefaultWebModule());
-      
+
       if (wms.isDebug()) {
         settings.put("debugMode", "on");
       } else {
@@ -63,16 +63,12 @@ public class ActionShowWebModuleSettings extends de.webertise.wbf.base.action.Ab
       this.setActionForwardName("ok");
     }
 
-    
     return true;
   }
 
   public boolean validate(CoaSession session, WebletRequest request) {
     log.debug(LOG_CATEGORY, "ActionShowWebModuleSettings - validate: Reached.");
-    
-    
-    
-    
+
     return true;
   }
 

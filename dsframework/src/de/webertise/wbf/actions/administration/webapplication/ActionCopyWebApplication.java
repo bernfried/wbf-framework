@@ -40,10 +40,10 @@ public class ActionCopyWebApplication extends de.webertise.wbf.base.action.Abstr
       String targetApplName = (String) this.getRequestParameter("targetApplName");
       Hashtable<String, String> attrList = ContentServices.getContentAttributesAsHashtable(session, "webApplicationSettings.applications." + sourceApplName, MasterWebletConstants.WBF_PROJECT_NAME,
           MasterWebletConstants.WBF_WEB_APPLICATION_SETTINGS_CONTENT_NAME, Locale.ENGLISH);
-      
+
       if (attrList.size() > 0) {
         Enumeration<String> attrListEnum = attrList.keys();
-        while (attrListEnum.hasMoreElements()) {
+        while(attrListEnum.hasMoreElements()) {
           String path = attrListEnum.nextElement();
           String value = attrList.get(path);
           if (value != null) {
@@ -71,7 +71,7 @@ public class ActionCopyWebApplication extends de.webertise.wbf.base.action.Abstr
         this.setErrorCode(Integer.toString(ACTION_EXECUTE_FAILED));
         this.setResponseParameter(ActionResponseItem.TARGET_SESSION, "webapplication.settings.copy", "false", false, false);
       }
-      
+
     } else {
       // action failed - show error
       super.setActionForwardName("nok");

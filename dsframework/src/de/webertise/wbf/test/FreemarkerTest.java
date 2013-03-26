@@ -10,17 +10,16 @@ import freemarker.template.Configuration;
 import freemarker.template.Template;
 import freemarker.template.TemplateException;
 
-
 public class FreemarkerTest {
 
   /**
    * @param args
    */
   public static void main(String[] args) {
-    
+
     // get a string template loader
     StringTemplateLoader stringLoader = new StringTemplateLoader();
-    
+
     // get the template and put it to the stringLoader
     String freemarkerTemplate = "FreeMarker Template example: ${message} ";
     stringLoader.putTemplate("myFirstTemplate", freemarkerTemplate);
@@ -28,7 +27,7 @@ public class FreemarkerTest {
     // get a template configuration
     Configuration cfg = new Configuration();
     cfg.setTemplateLoader(stringLoader);
-    
+
     // get template
     Template template = null;
     try {
@@ -37,12 +36,12 @@ public class FreemarkerTest {
       // TODO Auto-generated catch block
       e.printStackTrace();
     }
-    
+
     // process template
     StringWriter out = new StringWriter();
     Map<String, Object> data = new HashMap<String, Object>();
     data.put("message", "Bernfried");
-    
+
     try {
       template.process(data, out);
     } catch (TemplateException e) {
@@ -50,9 +49,9 @@ public class FreemarkerTest {
     } catch (IOException e) {
       e.printStackTrace();
     }
-    
+
     System.out.print(out);
-    
+
   }
 
 }

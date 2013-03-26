@@ -5,7 +5,6 @@ import java.io.StringWriter;
 import java.util.Map;
 
 import de.webertise.ds.services.LogServices;
-
 import freemarker.cache.StringTemplateLoader;
 import freemarker.template.Configuration;
 import freemarker.template.Template;

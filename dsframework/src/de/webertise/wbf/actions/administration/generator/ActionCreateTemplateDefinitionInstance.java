@@ -29,39 +29,39 @@ public class ActionCreateTemplateDefinitionInstance extends de.webertise.wbf.bas
 
     // get parameter
     String instanceName = (String) this.getRequestParameter("instanceName");
-    
+
     // get content
     ContentServices cs = new ContentServices();
-    
+
     String ctntGroup = "gen-templates/" + this.getRequestParameter("definition") + "/instances/" + instanceName;
-    log.debug(LOG_CATEGORY, "ActionCreateTemplateDefinitionInstance - execute: create content group with path '" + ctntGroup + "'" );
-    
+    log.debug(LOG_CATEGORY, "ActionCreateTemplateDefinitionInstance - execute: create content group with path '" + ctntGroup + "'");
+
     // create coaContentGroup
     CoaContentGroupController cgCtrl = CoaContentControllerFactory.getCoaContentGroupController();
     CoaContentGroup cg = cgCtrl.createCoaContentGroup(session, MasterWebletConstants.WBF_PROJECT_NAME, ctntGroup);
     cg.setDescription(instanceName);
-    log.debug(LOG_CATEGORY, "ActionCreateTemplateDefinitionInstance - execute: created content group '" + cg.getName() + "' with description '" + cg.getDescription() + "'" );
-    
+    log.debug(LOG_CATEGORY, "ActionCreateTemplateDefinitionInstance - execute: created content group '" + cg.getName() + "' with description '" + cg.getDescription() + "'");
+
     // set description
     if (cg != null) {
 
       // create new content
-      Hashtable<String,String> attributes = new Hashtable<String,String>(); 
+      Hashtable<String, String> attributes = new Hashtable<String, String>();
       attributes.put("root", "");
       attributes.put("root.controllerName", instanceName);
       attributes.put("root.attributes", "");
       int resultOk = cs.createContent(session, MasterWebletConstants.WBF_PROJECT_NAME, ctntGroup + "/", "definition.xml", Locale.ENGLISH, CoaContent.TYPE_XML, "", attributes, "|");
-      
+
       if (resultOk == 0) {
-        
+
         // make new instance the current one
         request.setParameter("instance", instanceName);
-      
+
         // action ok
         this.setActionForwardName("ok");
         this.setErrorCode("create_instance", Integer.toString(ACTION_EXECUTE_RESULT_OK));
         this.setErrorCode(Integer.toString(ACTION_EXECUTE_RESULT_OK));
-        
+
       } else {
         // action failed - show error
         this.setActionForwardName("nok");
@@ -69,13 +69,13 @@ public class ActionCreateTemplateDefinitionInstance extends de.webertise.wbf.bas
         this.setErrorCode(Integer.toString(ACTION_EXECUTE_FAILED));
       }
     }
-    
+
     return true;
   }
 
   public boolean validate(CoaSession session, WebletRequest request) {
     log.debug(LOG_CATEGORY, "ActionCreateTemplateDefinitionInstance - validate: Reached.");
-    
+
     // get request parameter
     boolean valid = false;
     valid = validateAllRequestParameters(session, request);
@@ -83,7 +83,7 @@ public class ActionCreateTemplateDefinitionInstance extends de.webertise.wbf.bas
       super.setActionForwardName("nok");
       this.setErrorCode(Integer.toString(ACTION_VALIDATION_RESULT_NOK));
     }
-    
+
     return valid;
   }
 

@@ -22,11 +22,11 @@ import de.reddot.api.common.user.CoaUserGroup;
 import de.reddot.api.web.io.WebletRequest;
 import de.webertise.ds.services.ContentServices;
 import de.webertise.ds.services.DynaMentServices;
+import de.webertise.wbf.actions.ActionConstants;
 import de.webertise.wbf.base.action.ActionResponseItem;
 import de.webertise.wbf.services.FreemarkerEngine;
 import de.webertise.wbf.services.MD5Hash;
 import de.webertise.wbf.weblet.MasterWeblet;
-import de.webertise.wbf.actions.ActionConstants;
 
 /**
  * 
@@ -66,16 +66,16 @@ public class ActionEditRegistration extends de.webertise.wbf.base.action.Abstrac
     // find out which roles and user groups need to be assigned for ths registration
     String applName = request.getParameter("wbf.requestctrldata.application");
     String roles[] = MasterWeblet.applicationSetting.getApplication(applName).getRoles();
-    if (roles!=null) {
-      for(int i=0; i<roles.length; i++) {
+    if (roles != null) {
+      for (int i = 0; i < roles.length; i++) {
         user.setRole(roles[i]);
       }
     }
     String groupsStr = (String) this.getRequestParameter("groups");
     log.debug(LOG_CATEGORY, "ActionEditRegistration - execute: Groups '" + groupsStr + "'");
-    if (groupsStr!=null) {
+    if (groupsStr != null) {
       String[] groups = groupsStr.split(";");
-      for(int i=0; i<groups.length; i++) {
+      for (int i = 0; i < groups.length; i++) {
         log.debug(LOG_CATEGORY, "ActionEditRegistration - execute: Group '" + groups[i] + "'");
         CoaUserGroup group = CoaUserController.selectUserGroup(groups[i]);
         user.addToGroup(group);

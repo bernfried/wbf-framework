@@ -26,15 +26,15 @@ public class ActionCreateTemplateDefinitionActionForward extends de.webertise.wb
     // get parameter
     String actionName = (String) this.getRequestParameter("action");
     String forwardName = (String) this.getRequestParameter("forwardName");
-    
+
     // get content
     ContentServices cs = new ContentServices();
-    
+
     String ctntGroup = "gen-templates/" + this.getRequestParameter("definition") + "/instances/" + this.getRequestParameter("instance") + "/";
-    log.debug(LOG_CATEGORY, "ActionCreateTemplateDefinitionActionForward - execute: read content from content group '" + ctntGroup + "'" );
-    
+    log.debug(LOG_CATEGORY, "ActionCreateTemplateDefinitionActionForward - execute: read content from content group '" + ctntGroup + "'");
+
     CoaContent ctnt = cs.getContent(session, MasterWebletConstants.WBF_PROJECT_NAME, ctntGroup, "definition.xml");
-    if (ctnt!=null) {
+    if (ctnt != null) {
       // update content
       String actionForwardPath = actionName + ".forwards." + forwardName;
       ctnt.setAttribute(actionForwardPath, Locale.ENGLISH, "");
@@ -45,7 +45,7 @@ public class ActionCreateTemplateDefinitionActionForward extends de.webertise.wb
       this.setActionForwardName("ok");
       this.setErrorCode(Integer.toString(ACTION_EXECUTE_RESULT_OK));
       this.setErrorCode("create_actionforward", Integer.toString(ACTION_EXECUTE_RESULT_OK));
-      
+
     } else {
       // acion failed - show error
       super.setActionForwardName("nok");
@@ -57,7 +57,7 @@ public class ActionCreateTemplateDefinitionActionForward extends de.webertise.wb
 
   public boolean validate(CoaSession session, WebletRequest request) {
     log.debug(LOG_CATEGORY, "ActionCreateTemplateDefinitionActionForward - validate: Reached.");
-    
+
     // get request parameter
     boolean valid = false;
     valid = validateAllRequestParameters(session, request);
@@ -65,7 +65,7 @@ public class ActionCreateTemplateDefinitionActionForward extends de.webertise.wb
       super.setActionForwardName("nok");
       this.setErrorCode(Integer.toString(ACTION_VALIDATION_RESULT_NOK));
     }
-    
+
     return valid;
   }
 

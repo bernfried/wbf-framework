@@ -15,8 +15,8 @@ import de.reddot.api.common.content.CoaContentGroupController;
 import de.reddot.api.common.session.CoaSession;
 import de.reddot.api.exception.AccessNotGrantedException;
 import de.reddot.api.web.io.WebletRequest;
-import de.webertise.wbf.base.action.ActionResponseItem;
 import de.webertise.wbf.actions.ActionConstants;
+import de.webertise.wbf.base.action.ActionResponseItem;
 import de.webertise.wbf.weblet.MasterWebletConstants;
 
 /**
@@ -108,24 +108,24 @@ public class ActionShowTemplateDefinitions extends de.webertise.wbf.base.action.
         this.setResponseParameter(ActionResponseItem.TARGET_SESSION_TRANSIENT, "instance", result, false, false);
       }
     }
-    
+
     // *******************************************************************************************
     // * provide available project/application names in response for drop-down list
     // *******************************************************************************************
     String projects = (String) this.getRequestParameter("general-projects");
-    if (projects!=null) {
+    if (projects != null) {
       List<String> pList = new ArrayList<String>();
-      StringTokenizer stProj = new StringTokenizer(projects,"|");
-      while (stProj.hasMoreTokens()) {
+      StringTokenizer stProj = new StringTokenizer(projects, "|");
+      while(stProj.hasMoreTokens()) {
         pList.add(stProj.nextToken());
       }
       this.setResponseParameter(ActionResponseItem.TARGET_SESSION_TRANSIENT, "available-projects", pList, false, false);
     }
     String apps = (String) this.getRequestParameter("general-applications");
-    if (apps!=null) {
+    if (apps != null) {
       List<String> aList = new ArrayList<String>();
-      StringTokenizer stApp = new StringTokenizer(apps,"|");
-      while (stApp.hasMoreTokens()) {
+      StringTokenizer stApp = new StringTokenizer(apps, "|");
+      while(stApp.hasMoreTokens()) {
         aList.add(stApp.nextToken());
       }
       this.setResponseParameter(ActionResponseItem.TARGET_SESSION_TRANSIENT, "available-applications", aList, false, false);
@@ -174,7 +174,7 @@ public class ActionShowTemplateDefinitions extends de.webertise.wbf.base.action.
         String attrValue = "";
         if (attrValues != null) {
           if (attrValues.length > 1) {
-            for (int i=0; i<attrValues.length; i++) {
+            for (int i = 0; i < attrValues.length; i++) {
               attrValue += "[" + attrValues[i] + "]";
             }
           } else {

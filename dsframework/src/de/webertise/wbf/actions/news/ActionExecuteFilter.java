@@ -34,5 +34,5 @@ public class ActionExecuteFilter extends de.webertise.wbf.base.action.AbstractAc
     log.debug(LOG_CATEGORY, "ActionExecuteFilter - validate: Reached.");
     return true;
   }
-  
+
 }

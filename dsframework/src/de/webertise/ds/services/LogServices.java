@@ -81,7 +81,8 @@ public class LogServices implements LogServicesConstants {
     checkAndAddLogger(loggerName);
     if (loggerList.get(loggerName).isWarnEnabled()) {
       loggerList.get(loggerName).warn(LOG_LINE_PREFIX + "(" + loggerName + ") - " + msg + LOG_LINE_SUFFIX);
-      if (this.requestLogging) this.requestLogger.add("[WARN] - " + loggerName + " - " + msg);
+      if (this.requestLogging)
+        this.requestLogger.add("[WARN] - " + loggerName + " - " + msg);
     }
   }
 
@@ -89,7 +90,8 @@ public class LogServices implements LogServicesConstants {
     checkAndAddLogger(loggerName);
     if (loggerList.get(loggerName).isInfoEnabled()) {
       loggerList.get(loggerName).info(LOG_LINE_PREFIX + "(" + loggerName + ") - " + msg + LOG_LINE_SUFFIX);
-      if (this.requestLogging) this.requestLogger.add("[INFO] - " + loggerName + " - " + msg);
+      if (this.requestLogging)
+        this.requestLogger.add("[INFO] - " + loggerName + " - " + msg);
     }
   }
 
@@ -97,7 +99,8 @@ public class LogServices implements LogServicesConstants {
     checkAndAddLogger(loggerName);
     if (loggerList.get(loggerName).isDebugEnabled()) {
       loggerList.get(loggerName).debug(LOG_LINE_PREFIX + "(" + loggerName + ") - " + msg + LOG_LINE_SUFFIX);
-      if (this.requestLogging) this.requestLogger.add("[DEBUG] - " + loggerName + " - " + msg);
+      if (this.requestLogging)
+        this.requestLogger.add("[DEBUG] - " + loggerName + " - " + msg);
     }
   }
 
@@ -105,7 +108,8 @@ public class LogServices implements LogServicesConstants {
     checkAndAddLogger(loggerName);
     if (loggerList.get(loggerName).isTraceEnabled()) {
       loggerList.get(loggerName).trace(LOG_LINE_PREFIX + "(" + loggerName + ") - " + msg + LOG_LINE_SUFFIX);
-      if (this.requestLogging) this.requestLogger.add("[TRACE] - " + loggerName + " - " + msg);
+      if (this.requestLogging)
+        this.requestLogger.add("[TRACE] - " + loggerName + " - " + msg);
     }
   }
 

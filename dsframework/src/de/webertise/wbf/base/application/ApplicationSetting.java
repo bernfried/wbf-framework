@@ -10,6 +10,7 @@ import java.util.Enumeration;
 import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.Locale;
+
 import de.reddot.api.common.content.CoaContent;
 import de.reddot.api.common.content.CoaContentController;
 import de.reddot.api.common.content.CoaContentControllerFactory;
@@ -167,7 +168,8 @@ public class ApplicationSetting {
           csNamePath = customSettingsPath + "." + csNamePath;
           String csName = csNamePath.substring(csNamePath.lastIndexOf('.') + 1, csNamePath.length());
           String csValue = content.getAttributeValue(csNamePath, Locale.ENGLISH);
-          if (csValue == null) csValue = "";
+          if (csValue == null)
+            csValue = "";
           if (csName != null && !csName.equals("")) {
             application.addCustomSetting(application.getName() + "." + csName, csValue);
             log.debug(LOG_CATEGORY, "ApplicationSetting - readApplicationSettingsFromContent: custom setting added for '" + csName + "' with value '" + csValue + "'");
@@ -194,7 +196,7 @@ public class ApplicationSetting {
         String actionNamePath = (String) actionsIter.next();
         actionNamePath = actionsAttrPath + "." + actionNamePath;
         String actionName = actionNamePath.substring(actionNamePath.lastIndexOf('.') + 1, actionNamePath.length());
-        
+
         // Log this
         logMsg = "Action '" + actionName + "' found in WebApplicationSettings content under path '" + actionNamePath + "'";
         log.debug(LOG_CATEGORY, "ApplicationSetting - readApplicationSettingsFromContent" + logMsg);
@@ -305,7 +307,7 @@ public class ApplicationSetting {
           String actionValidationRuleNamePath = (String) actionValidationRulesIter.next();
           actionValidationRuleNamePath = actionValidationRulesAttrPath + "." + actionValidationRuleNamePath;
           String actionValidationRuleName = actionValidationRuleNamePath.substring(actionValidationRuleNamePath.lastIndexOf('.') + 1, actionValidationRuleNamePath.length());
-          
+
           // create new validation rule
           ActionValidationRule actionValidationRule = new ActionValidationRule();
 

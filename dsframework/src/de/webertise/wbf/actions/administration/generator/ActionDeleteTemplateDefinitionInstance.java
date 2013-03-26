@@ -24,8 +24,8 @@ public class ActionDeleteTemplateDefinitionInstance extends de.webertise.wbf.bas
     log.debug(LOG_CATEGORY, "ActionDeleteTemplateDefinitionInstance - execute: Reached.");
 
     String ctntGroup = "gen-templates/" + this.getRequestParameter("definition") + "/instances/" + this.getRequestParameter("instance");
-    log.debug(LOG_CATEGORY, "ActionDeleteTemplateDefinitionInstance - execute: delete content group '" + ctntGroup + "'" );
-    
+    log.debug(LOG_CATEGORY, "ActionDeleteTemplateDefinitionInstance - execute: delete content group '" + ctntGroup + "'");
+
     CoaContentGroupController cgCtrl = CoaContentControllerFactory.getCoaContentGroupController();
     boolean deleteCtntGroup = false;
     try {
@@ -40,10 +40,10 @@ public class ActionDeleteTemplateDefinitionInstance extends de.webertise.wbf.bas
       request.removeParameter("instance");
 
     } catch (AccessNotGrantedException e) {
-      log.debug(LOG_CATEGORY, "ActionDeleteTemplateDefinitionInstance - execute: access not granted to delete content group '" + ctntGroup + "'" );
+      log.debug(LOG_CATEGORY, "ActionDeleteTemplateDefinitionInstance - execute: access not granted to delete content group '" + ctntGroup + "'");
       this.setErrorCode("delete_instance", ActionConstants.ACTION_CUSTOM_VALIDATION_ERROR_10);
     } catch (LockNotGrantedException e) {
-      log.debug(LOG_CATEGORY, "ActionDeleteTemplateDefinitionInstance - execute: content group '" + ctntGroup + "' is locked." );
+      log.debug(LOG_CATEGORY, "ActionDeleteTemplateDefinitionInstance - execute: content group '" + ctntGroup + "' is locked.");
       this.setErrorCode("delete_instance", ActionConstants.ACTION_CUSTOM_VALIDATION_ERROR_11);
     }
 
@@ -58,7 +58,7 @@ public class ActionDeleteTemplateDefinitionInstance extends de.webertise.wbf.bas
 
   public boolean validate(CoaSession session, WebletRequest request) {
     log.debug(LOG_CATEGORY, "ActionDeleteTemplateDefinitionInstance - validate: Reached.");
-    
+
     // get request parameter
     boolean valid = false;
     valid = validateAllRequestParameters(session, request);
@@ -66,7 +66,7 @@ public class ActionDeleteTemplateDefinitionInstance extends de.webertise.wbf.bas
       super.setActionForwardName("nok");
       this.setErrorCode(Integer.toString(ACTION_VALIDATION_RESULT_NOK));
     }
-    
+
     return valid;
   }
 

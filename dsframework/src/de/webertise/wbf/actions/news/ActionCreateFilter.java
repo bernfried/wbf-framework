@@ -24,14 +24,14 @@ public class ActionCreateFilter extends de.webertise.wbf.base.action.AbstractAct
     // result string buffer
     StringBuffer result = new StringBuffer();
     boolean isSelCategoryAll = false;
-    
-    //***********************************************************************
-    // get tags (and/or) flag if action is set to 
-    //***********************************************************************
+
+    // ***********************************************************************
+    // get tags (and/or) flag if action is set to
+    // ***********************************************************************
     String action = request.getParameter("action");
-    if (action!=null && action.equals("setTagsAndOrFlag")) {
+    if (action != null && action.equals("setTagsAndOrFlag")) {
       String tagsOp = request.getParameter("tagsOp");
-      if (tagsOp!=null) {
+      if (tagsOp != null) {
         session.setAttribute("community.selTagsAndOrFlag", tagsOp);
       }
     }
@@ -39,47 +39,49 @@ public class ActionCreateFilter extends de.webertise.wbf.base.action.AbstractAct
     if (selTagsAndOrFlag == null || selTagsAndOrFlag.equals("")) {
       session.setAttribute("community.selTagsAndOrFlag", "and");
     }
-    
-    //***********************************************************************
-    // check, if init is called 
-    //***********************************************************************
-    if (action!=null && action.equals("init")) {
+
+    // ***********************************************************************
+    // check, if init is called
+    // ***********************************************************************
+    if (action != null && action.equals("init")) {
       session.setAttribute("community.selCategory", "all");
       session.setAttribute("community.selFilterCategories", "");
       session.setAttribute("community.selTags", "");
       session.setAttribute("community.selTagsSemiSep", "");
       session.setAttribute("community.selTagsAndOrFlag", "or");
     }
-    
-    //***********************************************************************
+
+    // ***********************************************************************
     // get category
-    //***********************************************************************
+    // ***********************************************************************
     String category = request.getParameter("ctg");
     String selCategory = (String) session.getAttribute("community.selCategory");
     if (category != null) {
       result.append("(content.category EQ '" + category + "')");
       session.setAttribute("community.selCategory", category);
-      if (category.equals("all")) isSelCategoryAll = true;
+      if (category.equals("all"))
+        isSelCategoryAll = true;
     } else {
-      if (selCategory!=null && !selCategory.equals("")) {
+      if (selCategory != null && !selCategory.equals("")) {
         result.append("(content.category EQ '" + selCategory + "')");
-        if (selCategory.equals("all")) isSelCategoryAll = true;
+        if (selCategory.equals("all"))
+          isSelCategoryAll = true;
       } else {
         result.append("(content.category EQ 'all')");
         session.setAttribute("community.selCategory", "all");
         isSelCategoryAll = true;
       }
     }
-    
-    //***********************************************************************
+
+    // ***********************************************************************
     // check if selCategory is "all" - if yes, check selFilterCategories
-    //***********************************************************************
+    // ***********************************************************************
     if (isSelCategoryAll) {
       // get filtered category and add/remove from selFilteredCategories
       String filterCategory = request.getParameter("fctg");
       String selFilterCategories = (String) session.getAttribute("community.selFilterCategories");
-      if (selFilterCategories == null || selFilterCategories.equals("")) { 
-        if (filterCategory !=null && !filterCategory.equals("")) {
+      if (selFilterCategories == null || selFilterCategories.equals("")) {
+        if (filterCategory != null && !filterCategory.equals("")) {
           selFilterCategories = "[" + filterCategory + "]";
           session.setAttribute("community.selFilterCategories", selFilterCategories);
           result.append(" AND (content.category EQ '" + filterCategory + "')");
@@ -87,12 +89,13 @@ public class ActionCreateFilter extends de.webertise.wbf.base.action.AbstractAct
       } else {
         if (filterCategory != null && !filterCategory.equals("")) {
           if (selFilterCategories.contains("[" + filterCategory + "]")) {
-            selFilterCategories = selFilterCategories.replace("[" + filterCategory + "]","");
+            selFilterCategories = selFilterCategories.replace("[" + filterCategory + "]", "");
           } else {
             selFilterCategories += "[" + filterCategory + "]";
           }
           session.setAttribute("community.selFilterCategories", selFilterCategories);
-          if (!selFilterCategories.equals("")) result.append(getConstraint(selFilterCategories, "category"));
+          if (!selFilterCategories.equals(""))
+            result.append(getConstraint(selFilterCategories, "category"));
         } else {
           result.append(getConstraint(selFilterCategories, "category"));
         }
@@ -100,15 +103,15 @@ public class ActionCreateFilter extends de.webertise.wbf.base.action.AbstractAct
     } else {
       session.setAttribute("community.selFilterCategories", "");
     }
-    
-    //***********************************************************************
-    // get tag and add or remove from selTags 
-    //***********************************************************************
+
+    // ***********************************************************************
+    // get tag and add or remove from selTags
+    // ***********************************************************************
     String tag = request.getParameter("tag");
     String selTags = (String) session.getAttribute("community.selTags");
     log.debug(LOG_CATEGORY, "ActionCreateFilter - execute: tag='" + tag + "' / selTags='" + selTags + "'");
-    if (selTags == null || selTags.equals("")) { 
-      if (tag !=null && !tag.equals("")) {
+    if (selTags == null || selTags.equals("")) {
+      if (tag != null && !tag.equals("")) {
         selTags = "[" + tag + "]";
         session.setAttribute("community.selTags", selTags);
         session.setAttribute("community.selTagsSemiSep", selTags.replace("][", ";").replace("[", "").replace("]", ""));
@@ -117,7 +120,7 @@ public class ActionCreateFilter extends de.webertise.wbf.base.action.AbstractAct
     } else {
       if (tag != null && !tag.equals("")) {
         if (selTags.contains("[" + tag + "]")) {
-          selTags = selTags.replace("[" + tag + "]","");
+          selTags = selTags.replace("[" + tag + "]", "");
           log.debug(LOG_CATEGORY, "ActionCreateFilter - execute: removed tag='" + tag + "' from selTags='" + selTags + "'");
         } else {
           selTags += "[" + tag + "]";
@@ -152,6 +155,4 @@ public class ActionCreateFilter extends de.webertise.wbf.base.action.AbstractAct
     return constraint.toString();
   }
 
-
-  
 }

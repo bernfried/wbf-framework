@@ -29,14 +29,13 @@ public class ActionEditWebModuleSettings extends de.webertise.wbf.base.action.Ab
   public boolean execute(CoaSession session, WebletRequest request) {
     log.debug(LOG_CATEGORY, "ActionEditWebModuleSettings - execute: Reached.");
 
-    
     // get content
     ContentServices cs = new ContentServices();
     CoaContent ctnt = cs.getContent(session, MasterWebletConstants.WBF_PROJECT_NAME, "", MasterWebletConstants.WBF_WEB_MODULE_SETTINGS_CONTENT_NAME);
-    if (ctnt!=null) {
+    if (ctnt != null) {
       // write all request parameter to corresponding content attributes
       Enumeration<String> keys = this.getRequest().keys();
-      while (keys.hasMoreElements()) {
+      while(keys.hasMoreElements()) {
         String key = keys.nextElement();
         ctnt.setAttribute("webModuleSettings.general." + key, Locale.ENGLISH, (String) this.getRequestParameter(key));
       }
@@ -48,13 +47,13 @@ public class ActionEditWebModuleSettings extends de.webertise.wbf.base.action.Ab
       this.setActionForwardName("ok");
       this.setErrorCode(Integer.toString(ACTION_EXECUTE_RESULT_OK));
       this.setResponseParameter(ActionResponseItem.TARGET_SESSION, "webmodule.settings.edit", "true", false, false);
-      
+
     } else {
       // acion failed - show error
       super.setActionForwardName("nok");
       this.setErrorCode(Integer.toString(ACTION_EXECUTE_FAILED));
     }
-    
+
     return true;
 
   }

@@ -35,12 +35,11 @@ public class ActionResponse {
   public void setResponseParameter(String key, ActionResponseItem item) {
     this.response.put(key, item);
   }
-  
+
   public void setResponseParameter(int type, String name, Object value, boolean cdata, boolean htmlEncoded) {
     ActionResponseItem item = new ActionResponseItem(type, name, value, cdata, htmlEncoded);
     this.response.put(name, item);
   }
-
 
   public void setErrorCode(String errorCode) {
     this.errorCode = errorCode;

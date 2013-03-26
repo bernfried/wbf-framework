@@ -97,14 +97,14 @@ public class RequestControllerData {
     getApplicationName(wms, as);
     getActionName(wms, as);
     getRefererPageName(wms);
-    
+
     // write result to request for usage in actions
     request.setParameter("wbf.requestctrldata.project", this.projectName);
     request.setParameter("wbf.requestctrldata.webmodule", this.webModuleName);
     request.setParameter("wbf.requestctrldata.application", this.applicationName);
     request.setParameter("wbf.requestctrldata.action", this.actionName);
     request.setParameter("wbf.requestctrldata.referer", this.refererPageName);
-    
+
   }
 
   private String identifyUriPartBeforeRCD(WebletRequest request) {

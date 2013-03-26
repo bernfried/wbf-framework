@@ -6,22 +6,22 @@ import de.webertise.wbf.base.action.AbstractAction;
 
 /**
  * @author bernfried howe
- *
+ * 
  */
 public class ActionLogout extends AbstractAction {
 
-	public boolean validate(CoaSession session, WebletRequest request) {
-	    log.debug(LOG_CATEGORY, "ActionLogout.java - validate: Reached.");
-	    return true;
-	}
+  public boolean validate(CoaSession session, WebletRequest request) {
+    log.debug(LOG_CATEGORY, "ActionLogout.java - validate: Reached.");
+    return true;
+  }
 
-	public boolean execute(CoaSession session, WebletRequest request) {
-	  
-	    log.debug(LOG_CATEGORY, "ActionLogout.java - execute: Reached.");
+  public boolean execute(CoaSession session, WebletRequest request) {
 
-		super.setActionForwardName("ok");		
-		session.invalidate();
-		return true;
-	}
+    log.debug(LOG_CATEGORY, "ActionLogout.java - execute: Reached.");
+
+    super.setActionForwardName("ok");
+    session.invalidate();
+    return true;
+  }
 
 }

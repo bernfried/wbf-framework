@@ -45,14 +45,14 @@ public class TemplateDefinition {
     // following paths are ignored
     // root
     // root.actions
-    
+
     // these paths are considered
-    // root.actions.<action>                                (<= action name)
-    // root.actions.<action>.packagePath                    (<= action property)
-    // root.actions.<action>.attributes                     (<= action property)
-    // root.actions.<action>.forwards                       (<= ignored)
-    // root.actions.<action>.forwards.<fwname>              (<= forward name)
-    // root.actions.<action>.forwards.<fwname>.<propname>   (<= forward property
+    // root.actions.<action> (<= action name)
+    // root.actions.<action>.packagePath (<= action property)
+    // root.actions.<action>.attributes (<= action property)
+    // root.actions.<action>.forwards (<= ignored)
+    // root.actions.<action>.forwards.<fwname> (<= forward name)
+    // root.actions.<action>.forwards.<fwname>.<propname> (<= forward property
 
     log.trace(LOG_CATEGORY, "TemplateDefinition - extractActions: ***************************** begin *********************************");
 
@@ -68,44 +68,44 @@ public class TemplateDefinition {
 
     StringTokenizer st = new StringTokenizer(path, ".");
     ArrayList<String> tokens = new ArrayList<String>();
-    while (st.hasMoreTokens()) {
+    while(st.hasMoreTokens()) {
       tokens.add(st.nextToken());
     }
 
     int amountTokens = tokens.size();
     log.trace(LOG_CATEGORY, "TemplateDefinition - extractActions: amount tokens '" + amountTokens + "' for path: '" + path + "' and value '" + value + "'");
 
-    // only consider path strings with 3 or more tokens 
+    // only consider path strings with 3 or more tokens
     if (amountTokens >= 3) {
       actionName = tokens.get(2); // get action name
-      
+
       // get property or sub area like forwards
       if (amountTokens == 3) {
-        relevant=true;
+        relevant = true;
         isAction = true;
-      
+
       } else if (amountTokens == 4) {
         actionPropName = tokens.get(3);
         if (!actionPropName.equals("forwards")) {
-          relevant=true;
+          relevant = true;
           isActionProp = true;
         }
-      
+
       } else if (amountTokens == 5) {
         forwardName = tokens.get(4);
-        relevant=true;
+        relevant = true;
         isForward = true;
 
       } else if (amountTokens == 6) {
-          forwardName = tokens.get(4);
-          forwardPropName = tokens.get(5);
-          relevant=true;
-          isForwardProp = true;
+        forwardName = tokens.get(4);
+        forwardPropName = tokens.get(5);
+        relevant = true;
+        isForwardProp = true;
       }
     }
-    
+
     if (relevant) {
-      
+
       // create object if not yet done
       TemplateDefinitionAction tda = new TemplateDefinitionAction();
       if (!actionName.equals("") && this.actions.containsKey(actionName)) {
@@ -116,9 +116,9 @@ public class TemplateDefinition {
         log.trace(LOG_CATEGORY, "TemplateDefinition - extractActions: added new action to Template Definition for action: '" + actionName + "'");
       }
 
-      //******************************************
-      //* handle forwards
-      //******************************************
+      // ******************************************
+      // * handle forwards
+      // ******************************************
       if (isForward || isForwardProp) {
 
         ActionForwardDef afDef = null;
@@ -164,9 +164,9 @@ public class TemplateDefinition {
           tda.setAttributes(value);
           log.trace(LOG_CATEGORY, "TemplateDefinition - extractActions: setAttributes with: '" + value + "'");
         }
-        
+
         // handle action
-      } else if (isAction){
+      } else if (isAction) {
         tda.setKey(actionName);
         tda.setName(value);
       }
@@ -174,7 +174,6 @@ public class TemplateDefinition {
       // add to map
       this.actions.put(actionName, tda);
     }
-    
 
     log.trace(LOG_CATEGORY, "TemplateDefinition - extractActions: ***************************** end *********************************");
 
@@ -183,7 +182,7 @@ public class TemplateDefinition {
   private void extractAttributes(String path, String value) {
 
     log.trace(LOG_CATEGORY, "TemplateDefinition - extractAttributes: ***************************** begin *********************************");
-    
+
     String name = path.replace("root.attributes.", "");
     String prop = "";
     int pos = name.indexOf(".");

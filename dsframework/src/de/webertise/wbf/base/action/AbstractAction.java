@@ -51,9 +51,9 @@ public abstract class AbstractAction {
   }
 
   public abstract boolean validate(CoaSession session, WebletRequest request);
+
   public abstract boolean execute(CoaSession session, WebletRequest request);
 
-  
   public boolean init(CoaSession session, WebletRequest request, ActionMapping actionMapping) {
 
     logMsg = "ActionMapping - Action: " + actionMapping.getAction();
@@ -97,11 +97,11 @@ public abstract class AbstractAction {
       ActionValidationRule rule = this.actionMapping.getValidationRule(key);
 
       // if value is empty => set to default if available and if default values is multi-value, all values are semicolon-separated
-      if (value==null || value.equals("")) {
+      if (value == null || value.equals("")) {
         String[] values = rule.getDefaultValues();
         if (values != null && values.length > 0) {
           boolean isFirst = true;
-          for (int i=0; i<values.length; i++) {
+          for (int i = 0; i < values.length; i++) {
             if (isFirst) {
               value = values[i];
               isFirst = false;
@@ -111,10 +111,10 @@ public abstract class AbstractAction {
           }
         }
       }
-      
+
       logMsg = "Key/Value: '" + key + "' / '" + value + "'";
       log.debug(LOG_CATEGORY, "AbstractAction - validateAllRequestParameters: " + logMsg);
-      
+
       int result = AbstractAction.ACTION_VALIDATION_RESULT_OK;
       if (value != null) {
         // log key/value pairs of request parameters except password
@@ -172,7 +172,8 @@ public abstract class AbstractAction {
   protected int validateRequestParameter(String name, String value, ActionValidationRule rule) {
 
     // set request and response values
-    if (value == null) value = "";
+    if (value == null)
+      value = "";
     this.setRequestParameter(name, value);
 
     // get rule properties
@@ -285,12 +286,10 @@ public abstract class AbstractAction {
       this.actionErrors.put(key + ERROR_CLASS_POSTFIX, "");
     }
   }
-  
+
   private void setErrorCode(String key, String postfix, String value) {
     this.actionErrors.put(key + postfix, value);
   }
-
-
 
   public void removeRequestParameter(String key) {
     this.actionRequest.remove(key);

@@ -23,7 +23,7 @@ public class ActionSaveFilter extends de.webertise.wbf.base.action.AbstractActio
 
     // result string buffer
     StringBuffer result = new StringBuffer();
-    
+
     // get current session values
     String selCategory = (String) session.getAttribute("community.selCategory");
     String selFilterCategories = (String) session.getAttribute("community.selFilterCategories");
@@ -38,15 +38,15 @@ public class ActionSaveFilter extends de.webertise.wbf.base.action.AbstractActio
     result.append("selTags=" + selTags + "&");
     result.append("selTagsSemiSep=" + selTagsSemiSep + "&");
     result.append("selTagsAndOrFlag=" + selTagsAndOrFlag);
-    
+
     CoaUser user = session.getCoaUser();
-    if (user!=null) {
+    if (user != null) {
       CoaAttribute attr = user.getCoaAttribute("profile.community.savedSearches");
       attr.addValue(name + "|" + result.toString());
       user.setCoaAttribute(attr);
       CoaUserController.updateUser(user);
     }
-    
+
     // return constraint
     this.setResponseParameter(ActionResponseItem.TARGET_GLOBAL_MESSAGE, ActionResponseItem.GLOBAL_MESSAGE_SUCCESS_KEY, "savefilter.succeeded", false, false);
     this.setErrorCode(Integer.toString(ACTION_EXECUTE_RESULT_OK));
@@ -56,7 +56,7 @@ public class ActionSaveFilter extends de.webertise.wbf.base.action.AbstractActio
 
   public boolean validate(CoaSession session, WebletRequest request) {
     log.debug(LOG_CATEGORY, "ActionSaveFilter - validate: Reached.");
-    
+
     // get request parameter
     boolean valid = false;
     valid = validateAllRequestParameters(session, request);
@@ -70,5 +70,5 @@ public class ActionSaveFilter extends de.webertise.wbf.base.action.AbstractActio
       return false;
     }
   }
-  
+
 }

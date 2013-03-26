@@ -12,29 +12,29 @@ import de.webertise.ds.services.LogServices;
 public class ActionResponseItem {
 
   // constants
-  public static final int TARGET_SESSION = 1;
-  public static final int TARGET_REQUEST = 2;
-  public static final int TARGET_SESSION_TRANSIENT = 3;
-  public static final int TARGET_GLOBAL_MESSAGE = 4;
-  
-  // standard response item keys
-  public static final String KEY_SHORTCUT_TARGET_URL = "shortcutTargetUrl";
+  public static final int    TARGET_SESSION             = 1;
+  public static final int    TARGET_REQUEST             = 2;
+  public static final int    TARGET_SESSION_TRANSIENT   = 3;
+  public static final int    TARGET_GLOBAL_MESSAGE      = 4;
 
-  public static final String GLOBAL_MESSAGE_ERROR_KEY = "global.message.error";
+  // standard response item keys
+  public static final String KEY_SHORTCUT_TARGET_URL    = "shortcutTargetUrl";
+
+  public static final String GLOBAL_MESSAGE_ERROR_KEY   = "global.message.error";
   public static final String GLOBAL_MESSAGE_SUCCESS_KEY = "global.message.success";
   public static final String GLOBAL_MESSAGE_WARNING_KEY = "global.message.warning";
-  
-  public static final String LOG_CATEGORY = "wbf_response";
+
+  public static final String LOG_CATEGORY               = "wbf_response";
 
   // variables
-  private LogServices         log                = LogServices.getInstance(LOG_CATEGORY);
+  private LogServices        log                        = LogServices.getInstance(LOG_CATEGORY);
 
   // properties
-  private int             target;
-  private String          name;
-  private Object          value;
-  private boolean         cdata          = false;
-  private boolean         htmlEncoded    = false;
+  private int                target;
+  private String             name;
+  private Object             value;
+  private boolean            cdata                      = false;
+  private boolean            htmlEncoded                = false;
 
   public ActionResponseItem(int target, String name, Object value, boolean cdata, boolean htmlEncoded) {
     this.target = target;
@@ -109,16 +109,16 @@ public class ActionResponseItem {
     StringBuffer sb = new StringBuffer();
 
     log.debug(LOG_CATEGORY, "ActionResponseItem - getAsXml: execute value with name '" + this.name + "'");
-    
+
     // check object type "Map"
     if (this.value instanceof CoaAttribute) {
-      
+
       log.debug(LOG_CATEGORY, "ActionResponseItem - getAsXml: value is CoaAttribute");
       // get name and values from attribute and create an xml
       getXmlForCoaAttribute((CoaAttribute) this.value, sb);
-      
+
     } else if (this.value instanceof Map) {
-      
+
       log.debug(LOG_CATEGORY, "ActionResponseItem - getAsXml: value is Map");
 
       // ******************************************************************************
@@ -129,29 +129,29 @@ public class ActionResponseItem {
       while(keys.hasNext()) {
         String key = keys.next();
         Object value = ((Map<String, Object>) this.value).get(key);
- 
+
         // check recursive if type is ActionResponseItem
         if (value instanceof String) {
-          
+
           sb.append("<" + key + ">");
           sb.append(prepareValue(value));
           sb.append("</" + key + ">");
-          
-        } else if (value instanceof CoaAttribute) { 
-          
+
+        } else if (value instanceof CoaAttribute) {
+
           getXmlForCoaAttribute((CoaAttribute) value, sb);
-          
+
         } else if (value instanceof ActionResponseItem) {
-          
+
           sb.append("<" + key + ">");
           sb.append(((ActionResponseItem) value).getAsXml());
           sb.append("</" + key + ">");
-          
+
         } else if (value instanceof List) {
 
           log.debug(LOG_CATEGORY, "ActionResponseItem - getAsXml: value is List");
           getXmlForList((List<Object>) value, key, sb);
-          
+
         }
       }
       sb.append("</" + this.name + ">");
@@ -165,7 +165,7 @@ public class ActionResponseItem {
     } else if (this.value instanceof Enumeration) {
 
       log.debug(LOG_CATEGORY, "ActionResponseItem - getAsXml: value is Enumeration");
-      Enumeration<String> items = (Enumeration<String>) this.value;  
+      Enumeration<String> items = (Enumeration<String>) this.value;
       getXmlForEnumeration(items, this.name, sb);
 
     } else if (this.value instanceof String) {
@@ -183,7 +183,7 @@ public class ActionResponseItem {
     // * build xml for List values
     // ******************************************************************************
     sb.append("<" + elementName + ">");
-    while (items.hasMoreElements()) {
+    while(items.hasMoreElements()) {
       String item = items.nextElement();
       sb.append("<value>" + prepareValue(item) + "</value>");
     }
@@ -197,10 +197,10 @@ public class ActionResponseItem {
     sb.append("<" + elementName + ">");
     for (int i = 0; i < list.size(); i++) {
       Object item = list.get(i);
-      
+
       if (item instanceof String) {
         sb.append("<value>" + prepareValue(item) + "</value>");
-        
+
       } else if (item instanceof CoaAttribute) {
         getXmlForCoaAttribute((CoaAttribute) item, sb);
 

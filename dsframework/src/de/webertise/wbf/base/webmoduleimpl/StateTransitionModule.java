@@ -104,8 +104,8 @@ public class StateTransitionModule extends de.webertise.wbf.base.module.Abstract
         }
         // check action user group against groups of current user
         if (!actionMapping.checkUserGroups((String) session.getAttribute("wbf.currentuser.groups"))) {
-          log.debug(LOG_CATEGORY, "StateTransitionModule - handleRequest: user '" + session.getLogin() + "' needs one of the following groups: '" + actionMapping.getGroupsAsString() + "' for action '"
-              + actionToExecute + "'.");
+          log.debug(LOG_CATEGORY, "StateTransitionModule - handleRequest: user '" + session.getLogin() + "' needs one of the following groups: '" + actionMapping.getGroupsAsString()
+              + "' for action '" + actionToExecute + "'.");
           actionMapping = application.getActionMapping(initAction);
         }
       }
@@ -204,9 +204,8 @@ public class StateTransitionModule extends de.webertise.wbf.base.module.Abstract
       // * if action was formerly set to default action, an global message is created.
       // * (only if no shortcut matched)
       // ************************************************************************
-      if (actionResponse.getResponse().get(ActionResponseItem.KEY_SHORTCUT_TARGET_URL) == null && 
-          reqCtrlData.getActionNameFound() == RequestControllerData.PARAMETER_VALUE_WRONG_AND_SET_TO_DEFAULT && 
-          (reqCtrlData.getRefererPageName() == null || reqCtrlData.getRefererPageName().equals(""))) {
+      if (actionResponse.getResponse().get(ActionResponseItem.KEY_SHORTCUT_TARGET_URL) == null && reqCtrlData.getActionNameFound() == RequestControllerData.PARAMETER_VALUE_WRONG_AND_SET_TO_DEFAULT
+          && (reqCtrlData.getRefererPageName() == null || reqCtrlData.getRefererPageName().equals(""))) {
         abstractActionObject.setResponseParameter(ActionResponseItem.TARGET_GLOBAL_MESSAGE, ActionResponseItem.GLOBAL_MESSAGE_SUCCESS_KEY, "action.set_to_default", false, false);
       }
 

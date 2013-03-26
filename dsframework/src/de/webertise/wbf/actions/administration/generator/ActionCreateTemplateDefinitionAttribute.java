@@ -25,15 +25,15 @@ public class ActionCreateTemplateDefinitionAttribute extends de.webertise.wbf.ba
 
     // get parameter
     String attrName = (String) this.getRequestParameter("attributeName");
-    
+
     // get content
     ContentServices cs = new ContentServices();
-    
+
     String ctntGroup = "gen-templates/" + this.getRequestParameter("definition") + "/instances/" + this.getRequestParameter("instance") + "/";
-    log.debug(LOG_CATEGORY, "ActionCreateTemplateDefinitionAttribute - execute: read content from content group '" + ctntGroup + "'" );
-    
+    log.debug(LOG_CATEGORY, "ActionCreateTemplateDefinitionAttribute - execute: read content from content group '" + ctntGroup + "'");
+
     CoaContent ctnt = cs.getContent(session, MasterWebletConstants.WBF_PROJECT_NAME, ctntGroup, "definition.xml");
-    if (ctnt!=null) {
+    if (ctnt != null) {
       // update content
       String attrPath = "root.attributes." + attrName;
       ctnt.setAttribute(attrPath, Locale.ENGLISH, attrName);
@@ -49,7 +49,7 @@ public class ActionCreateTemplateDefinitionAttribute extends de.webertise.wbf.ba
       this.setActionForwardName("ok");
       this.setErrorCode(Integer.toString(ACTION_EXECUTE_RESULT_OK));
       this.setErrorCode("create_attribute", Integer.toString(ACTION_EXECUTE_RESULT_OK));
-      
+
     } else {
       // acion failed - show error
       super.setActionForwardName("nok");
@@ -61,7 +61,7 @@ public class ActionCreateTemplateDefinitionAttribute extends de.webertise.wbf.ba
 
   public boolean validate(CoaSession session, WebletRequest request) {
     log.debug(LOG_CATEGORY, "ActionCreateTemplateDefinitionAttribute - validate: Reached.");
-    
+
     // get request parameter
     boolean valid = false;
     valid = validateAllRequestParameters(session, request);
@@ -69,7 +69,7 @@ public class ActionCreateTemplateDefinitionAttribute extends de.webertise.wbf.ba
       super.setActionForwardName("nok");
       this.setErrorCode(Integer.toString(ACTION_VALIDATION_RESULT_NOK));
     }
-    
+
     return valid;
   }
 

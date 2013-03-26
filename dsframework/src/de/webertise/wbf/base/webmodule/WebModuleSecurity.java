@@ -6,10 +6,10 @@
 
 package de.webertise.wbf.base.webmodule;
 
-import de.webertise.ds.services.LogServices;
-import de.webertise.wbf.base.webmodule.WebModuleIpSecurityItem;
 import java.util.ArrayList;
 import java.util.StringTokenizer;
+
+import de.webertise.ds.services.LogServices;
 
 /**
  * 

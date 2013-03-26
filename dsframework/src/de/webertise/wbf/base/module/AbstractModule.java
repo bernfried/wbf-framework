@@ -14,21 +14,17 @@ import de.webertise.wbf.base.application.ApplicationSetting;
 import de.webertise.wbf.base.webmodule.WebModuleSetting;
 import de.webertise.wbf.weblet.RequestControllerData;
 
-
 /**
- *
- * @author  bernfried.howe
+ * 
+ * @author bernfried.howe
  */
 public abstract class AbstractModule {
-    
-    /** Creates a new instance of AbstractModule */
-    public AbstractModule() {}
-    
-    public abstract ActionResponse handleRequest( WebletRequest request, 
-                                           WebletResponse response, 
-                                           CoaSession session,
-                                           WebModuleSetting webModuleSetting,
-                                           ApplicationSetting applicationSetting,
-                                           RequestControllerData reqCtrlData);
+
+  /** Creates a new instance of AbstractModule */
+  public AbstractModule() {
+  }
+
+  public abstract ActionResponse handleRequest(WebletRequest request, WebletResponse response, CoaSession session, WebModuleSetting webModuleSetting, ApplicationSetting applicationSetting,
+      RequestControllerData reqCtrlData);
 
 }

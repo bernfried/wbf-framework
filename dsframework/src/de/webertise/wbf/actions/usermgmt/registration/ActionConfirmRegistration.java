@@ -29,10 +29,10 @@ public class ActionConfirmRegistration extends de.webertise.wbf.base.action.Abst
 
     // create new user object
     CoaUser user = CoaUserController.selectUser((String) this.getRequestParameter("login"));
-    
+
     // check token
     CoaAttribute attrToken = user.getCoaAttribute("profile.token.registration.confirmation");
-    if (attrToken!=null && attrToken.getValue().equals((String) this.getRequestParameter("token"))) {
+    if (attrToken != null && attrToken.getValue().equals((String) this.getRequestParameter("token"))) {
       user.setStatus(CoaUser.STATUS_ACTIVE);
       user.setCoaAttribute("profile.activated", "" + System.currentTimeMillis());
       user.setCoaAttribute("profile.token.registration.confirmation", "");

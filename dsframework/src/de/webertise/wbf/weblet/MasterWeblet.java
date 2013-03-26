@@ -171,7 +171,8 @@ public class MasterWeblet extends WebletAdapter implements MasterWebletConstants
       boolean ipAuthorized = true;
       String ipAddressFromHeader = request.getHttpServletRequest().getHeader("REMOTE_ADDR");
       String ipAddressFromRequest = request.getHttpServletRequest().getRemoteAddr();
-      log.debug(LOG_CATEGORY, "MasterWeblet - handleRequest: Check IP-Address Security with IP Address (Header REMOTE_ADDR) '" + ipAddressFromHeader + "' or request.getRemoteAddr() ' " + ipAddressFromRequest + "'.");
+      log.debug(LOG_CATEGORY, "MasterWeblet - handleRequest: Check IP-Address Security with IP Address (Header REMOTE_ADDR) '" + ipAddressFromHeader + "' or request.getRemoteAddr() ' "
+          + ipAddressFromRequest + "'.");
       if (ipAddressFromHeader != null && !ipAddressFromHeader.equals("")) {
         ipAuthorized = webModule.checkIpSecurity(ipAddressFromHeader);
       } else {
@@ -187,7 +188,7 @@ public class MasterWeblet extends WebletAdapter implements MasterWebletConstants
     }
 
     // *************************************************************************
-    // * write list of projects and applications always to request and other 
+    // * write list of projects and applications always to request and other
     // * general parameters always to request
     // *************************************************************************
     request.setParameter("general-applications", applicationSetting.getApplicationNames("|"));

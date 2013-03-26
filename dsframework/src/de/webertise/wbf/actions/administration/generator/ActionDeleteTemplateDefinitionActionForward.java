@@ -22,12 +22,12 @@ public class ActionDeleteTemplateDefinitionActionForward extends de.webertise.wb
 
     // get content
     ContentServices cs = new ContentServices();
-    
+
     String ctntGroup = "gen-templates/" + this.getRequestParameter("definition") + "/instances/" + this.getRequestParameter("instance") + "/";
-    log.debug(LOG_CATEGORY, "ActionDeleteTemplateDefinitionActionForward - execute: read content from content group '" + ctntGroup + "'" );
-    
+    log.debug(LOG_CATEGORY, "ActionDeleteTemplateDefinitionActionForward - execute: read content from content group '" + ctntGroup + "'");
+
     CoaContent ctnt = cs.getContent(session, MasterWebletConstants.WBF_PROJECT_NAME, ctntGroup, "definition.xml");
-    if (ctnt!=null) {
+    if (ctnt != null) {
       // update content
       ctnt.deleteAttribute((String) this.getRequestParameter("forward"));
       cs.updateContent(session, ctnt);
@@ -35,7 +35,7 @@ public class ActionDeleteTemplateDefinitionActionForward extends de.webertise.wb
       this.setActionForwardName("ok");
       this.setErrorCode(Integer.toString(ACTION_EXECUTE_RESULT_OK));
       this.setErrorCode("delete_actionforward", "0");
-      
+
     } else {
       // acion failed - show error
       this.setActionForwardName("nok");
@@ -51,7 +51,7 @@ public class ActionDeleteTemplateDefinitionActionForward extends de.webertise.wb
 
   public boolean validate(CoaSession session, WebletRequest request) {
     log.debug(LOG_CATEGORY, "ActionDeleteTemplateDefinitionActionForward - validate: Reached.");
-    
+
     // get request parameter
     boolean valid = false;
     valid = validateAllRequestParameters(session, request);
@@ -59,7 +59,7 @@ public class ActionDeleteTemplateDefinitionActionForward extends de.webertise.wb
       this.setActionForwardName("nok");
       this.setErrorCode(Integer.toString(ACTION_VALIDATION_RESULT_NOK));
     }
-    
+
     return valid;
   }
 

@@ -37,7 +37,7 @@ public class ActionShowProfile extends de.webertise.wbf.base.action.AbstractActi
 
     // get user groups for authorization of dialog
     CoaUser user = session.getCoaUser();
-    
+
     // get user groups as List
     @SuppressWarnings("unchecked")
     Enumeration<CoaUserGroup> userEnum = user.getGroupsEnumeration();
@@ -51,16 +51,17 @@ public class ActionShowProfile extends de.webertise.wbf.base.action.AbstractActi
     // get user attributes as Map
     @SuppressWarnings("unchecked")
     Enumeration<CoaAttribute> attrEnum = user.getCoaAttributeEnumeration(true);
-    Map<String,String> userAttr = new Hashtable<String,String>();
+    Map<String, String> userAttr = new Hashtable<String, String>();
     while(attrEnum.hasMoreElements()) {
       CoaAttribute attr = (CoaAttribute) attrEnum.nextElement();
       if (attr.getPath().startsWith("profile.")) {
         log.debug(LOG_CATEGORY, "ActionShowProfile - execute: attr path: '" + attr.getPath() + "' added to list.");
         String path = attr.getPath();
         int lastIndex = path.lastIndexOf(".");
-        String key = path.substring(lastIndex+1);
+        String key = path.substring(lastIndex + 1);
         String value = attr.getValue();
-        if (value==null) value="";
+        if (value == null)
+          value = "";
         userAttr.put(key, value);
       }
     }
@@ -70,7 +71,7 @@ public class ActionShowProfile extends de.webertise.wbf.base.action.AbstractActi
     @SuppressWarnings("unchecked")
     List<String> tmList = Arrays.asList(TimeZone.getAvailableIDs());
     this.setResponseParameter(ActionResponseItem.TARGET_SESSION_TRANSIENT, "myprofile.timezones", tmList, false, false);
-    
+
     // action ok
     this.setErrorCode(Integer.toString(ACTION_EXECUTE_RESULT_OK));
     this.setActionForwardName("ok");

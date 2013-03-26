@@ -8,9 +8,9 @@ import de.reddot.api.common.user.CoaUser;
 import de.reddot.api.common.user.CoaUserController;
 import de.reddot.api.common.user.CoaUserGroup;
 import de.reddot.api.web.io.WebletRequest;
+import de.webertise.wbf.actions.ActionConstants;
 import de.webertise.wbf.base.action.ActionResponseItem;
 import de.webertise.wbf.weblet.MasterWeblet;
-import de.webertise.wbf.actions.ActionConstants;
 
 /**
  * 
@@ -35,7 +35,7 @@ public class ActionLogin extends de.webertise.wbf.base.action.AbstractAction {
 
     // get user first to check user groups and roles
     CoaUser user = null;
-    if (login!=null && !login.equals("")) {
+    if (login != null && !login.equals("")) {
       log.debug(LOG_CATEGORY, "ActionLogin - execute: Login = '" + login + "'");
       try {
         user = CoaUserController.selectUser(login);
@@ -43,9 +43,9 @@ public class ActionLogin extends de.webertise.wbf.base.action.AbstractAction {
         log.debug(LOG_CATEGORY, "ActionLogin - execute: ObjectNotFoundException for Login = '" + login + "'");
       }
     }
-    
+
     // check user
-    if (user!=null) {
+    if (user != null) {
       String roles = "";
       @SuppressWarnings("unchecked")
       Enumeration<String> roleEnum = user.getRolesEnumeration();

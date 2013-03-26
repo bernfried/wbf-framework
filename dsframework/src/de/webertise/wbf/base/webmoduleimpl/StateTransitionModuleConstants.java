@@ -7,8 +7,8 @@
 package de.webertise.wbf.base.webmoduleimpl;
 
 /**
- *
- * @author  bernfried.howe
+ * 
+ * @author bernfried.howe
  */
 public interface StateTransitionModuleConstants {
 

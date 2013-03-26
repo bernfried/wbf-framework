@@ -20,7 +20,7 @@ public class WebModule {
   private String              name;
   private String              classpath;
   private WebModuleSecurity   webModuleSecurity;
-  private LogServices         log                   = LogServices.getInstance(LOG_CATEGORY);
+  private LogServices         log          = LogServices.getInstance(LOG_CATEGORY);
 
   /** Creates a new instance of WebModule */
   public WebModule() {

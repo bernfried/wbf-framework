@@ -30,10 +30,10 @@ public class ActionConfirmForgotPassword extends de.webertise.wbf.base.action.Ab
     // create new user object
     String login = (String) this.getRequestParameter("login");
     CoaUser user = CoaUserController.selectUser(login);
-    
+
     // check token
     CoaAttribute attrToken = user.getCoaAttribute("profile.token.forgotpassword.confirmation");
-    if (attrToken!=null && attrToken.getValue().equals((String) this.getRequestParameter("token"))) {
+    if (attrToken != null && attrToken.getValue().equals((String) this.getRequestParameter("token"))) {
 
       int result = session.assignUserTrusted(login);
       if (result == 0) {

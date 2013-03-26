@@ -10,16 +10,16 @@ import de.webertise.wbf.base.action.ActionForwardDef;
 
 public class TemplateDefinitionAction {
 
-  private String key;
-  private String name;
-  private String attributes;
-  private String packageName;
-  private String group;
-  private Map<String,ActionForwardDef> forwards;
-  private List<String> attrList;
-  
+  private String                        key;
+  private String                        name;
+  private String                        attributes;
+  private String                        packageName;
+  private String                        group;
+  private Map<String, ActionForwardDef> forwards;
+  private List<String>                  attrList;
+
   public TemplateDefinitionAction() {
-    forwards = new Hashtable<String,ActionForwardDef>();
+    forwards = new Hashtable<String, ActionForwardDef>();
     attrList = new ArrayList<String>();
   }
 
@@ -63,17 +63,17 @@ public class TemplateDefinitionAction {
    */
   public void setAttributes(String attributes) {
     this.attributes = attributes;
-    StringTokenizer st = new StringTokenizer(attributes,";");
-    while (st.hasMoreTokens()) {
+    StringTokenizer st = new StringTokenizer(attributes, ";");
+    while(st.hasMoreTokens()) {
       this.attrList.add(st.nextToken());
     }
   }
 
-  public Map<String,ActionForwardDef> getForwards() {
+  public Map<String, ActionForwardDef> getForwards() {
     return forwards;
   }
 
-  public void setForwards(Map<String,ActionForwardDef> forwards) {
+  public void setForwards(Map<String, ActionForwardDef> forwards) {
     this.forwards = forwards;
   }
 
@@ -90,15 +90,15 @@ public class TemplateDefinitionAction {
   }
 
   public String getNameWithUpperCaseLetter() {
-    if (this.getName()!=null && this.getName().length() > 1) {
-      return this.getName().substring(0,1).toUpperCase() + this.getName().substring(1);
+    if (this.getName() != null && this.getName().length() > 1) {
+      return this.getName().substring(0, 1).toUpperCase() + this.getName().substring(1);
     } else {
       return this.getName();
     }
   }
-  
+
   public boolean hasAttribute(String name) {
-    if (this.attrList != null && this.attrList.contains(name) ) {
+    if (this.attrList != null && this.attrList.contains(name)) {
       return true;
     } else {
       return false;
@@ -112,5 +112,5 @@ public class TemplateDefinitionAction {
   public void setGroup(String group) {
     this.group = group;
   }
-  
+
 }

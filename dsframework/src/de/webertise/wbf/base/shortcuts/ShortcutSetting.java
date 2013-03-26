@@ -18,26 +18,24 @@ import de.reddot.api.common.session.CoaSession;
 import de.webertise.ds.services.ContentServices;
 import de.webertise.ds.services.LogServices;
 
-
 public class ShortcutSetting {
 
-  //*********************************************************
-  //* properties
-  //*********************************************************
+  // *********************************************************
+  // * properties
+  // *********************************************************
   private final static String LOG_CATEGORY = "wbf_settings";
   private LogServices         log          = LogServices.getInstance(LOG_CATEGORY);
   private ArrayList<Shortcut> shortcuts    = new ArrayList<Shortcut>();
 
-  //*********************************************************
-  //* constructor
-  //*********************************************************
+  // *********************************************************
+  // * constructor
+  // *********************************************************
   public ShortcutSetting() {
   }
 
-  
-  //*********************************************************
-  //* Getters and Setters
-  //*********************************************************
+  // *********************************************************
+  // * Getters and Setters
+  // *********************************************************
 
   /**
    * @return the shortCuts
@@ -52,10 +50,10 @@ public class ShortcutSetting {
   public void setShortcuts(ArrayList<Shortcut> shortCuts) {
     this.shortcuts = shortCuts;
   }
- 
-  //*********************************************************
-  //* Methods
-  //*********************************************************
+
+  // *********************************************************
+  // * Methods
+  // *********************************************************
   public String checkShortcut(String sourceRequestUri, String sourceUrl) {
 
     String targetUrl = "";

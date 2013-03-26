@@ -115,7 +115,7 @@ public class WebModuleSetting {
   public void setDebug(boolean debug) {
     this.debug = debug;
   }
-  
+
   public boolean isWbfDefaultWeblet() {
     return wbfDefaultWeblet;
   }
@@ -178,7 +178,6 @@ public class WebModuleSetting {
       log.debug(LOG_CATEGORY, "WebModuleSetting - readWebModuleSettingsFromContent: wbfDefaultWeblet = off");
       this.wbfDefaultWeblet = false;
     }
-
 
     @SuppressWarnings("unchecked")
     Iterator<String> attrIter = content.getAttributePaths("webModuleSettings.webModules", false);

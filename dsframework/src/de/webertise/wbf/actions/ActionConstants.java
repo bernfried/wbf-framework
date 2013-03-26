@@ -15,5 +15,4 @@ public interface ActionConstants {
   public static final String ACTION_CUSTOM_VALIDATION_ERROR_19 = "19";
   public static final String ACTION_CUSTOM_VALIDATION_ERROR_20 = "20";
 
-  
 }

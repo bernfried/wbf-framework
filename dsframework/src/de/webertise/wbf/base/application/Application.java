@@ -199,13 +199,13 @@ public class Application {
   public boolean checkUserRoles(String roles) {
     // find the first corresponding role
     if (this.roles != null) {
-      for (int i=0; i<this.roles.length; i++) {
+      for (int i = 0; i < this.roles.length; i++) {
         if (roles.contains("[" + this.roles[i] + "]")) {
           return true;
         }
       }
       return false;
-    }  else {
+    } else {
       return true;
     }
   }
@@ -213,7 +213,7 @@ public class Application {
   public String getRolesAsString() {
     String result = "";
     if (this.roles != null) {
-      for (int i=0; i<this.roles.length; i++) {
+      for (int i = 0; i < this.roles.length; i++) {
         result = result + "[" + this.roles[i] + "]";
       }
     }

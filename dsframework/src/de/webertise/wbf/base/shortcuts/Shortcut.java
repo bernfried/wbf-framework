@@ -3,12 +3,12 @@ package de.webertise.wbf.base.shortcuts;
 public class Shortcut {
 
   public final static int SHORTCUT_TYPE_DOMAIN = 1;
-  public final static int SHORTCUT_TYPE_URL = 2;
-  
-  private String pattern;
-  private String targetUrl;
-  private int type;
-  
+  public final static int SHORTCUT_TYPE_URL    = 2;
+
+  private String          pattern;
+  private String          targetUrl;
+  private int             type;
+
   public Shortcut(String pattern, String targetUrl, int type) {
     this.setPattern(pattern);
     this.setTargetUrl(targetUrl);
