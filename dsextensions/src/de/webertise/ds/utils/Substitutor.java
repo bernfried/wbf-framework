@@ -27,7 +27,7 @@ public class Substitutor {
 
         String inputString = "<h2><#anrede#> <#name#></h2><p>Wie geht es Dir?</p> #TEST <#name#>";
         String outputString = substituteVariables(inputString, valuesMap, "<#", "#>");
-        // System.out.println(outputString);
+        System.out.println(outputString);
     }
 		
 	public static String substituteVariables(String inputString, Map<String, String> valuesMap, String prefix, String suffix) throws IOException {
