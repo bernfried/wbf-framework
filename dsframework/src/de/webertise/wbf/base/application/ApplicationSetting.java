@@ -35,7 +35,6 @@ public class ApplicationSetting {
 
   private String                         initAction   = "";
   private String                         loginAction  = "";
-  private String                         logoutAction = "";
 
   private LogServices                    log          = LogServices.getInstance(LOG_CATEGORY);
 
@@ -64,10 +63,6 @@ public class ApplicationSetting {
 
   public String getLoginAction() {
     return this.loginAction;
-  }
-
-  public String getLogoutAction() {
-    return this.logoutAction;
   }
 
   /**
@@ -105,9 +100,8 @@ public class ApplicationSetting {
     // *************************************************************
     this.initAction = content.getAttributeValue("webApplicationSettings.InitAction", Locale.ENGLISH);
     this.loginAction = content.getAttributeValue("webApplicationSettings.LoginAction", Locale.ENGLISH);
-    this.logoutAction = content.getAttributeValue("webApplicationSettings.LogoutAction", Locale.ENGLISH);
-    if (this.initAction == null || this.loginAction == null || this.logoutAction == null) {
-      logMsg = "Application Setting - initAction, loginAction and/or logoutAction not defined in content.";
+    if (this.initAction == null || this.loginAction == null) {
+      logMsg = "Application Setting - initAction and/or loginAction is not defined in content.";
       log.debug(LOG_CATEGORY, "ApplicationSetting - readApplicationSettingsFromContent" + logMsg);
     }
 
@@ -144,14 +138,12 @@ public class ApplicationSetting {
       application.setActionPath(content.getAttributeValue(applicationNamePath + ".actionPath", Locale.ENGLISH));
       application.setDefaultAction(content.getAttributeValue(applicationNamePath + ".defaultAction", Locale.ENGLISH));
       application.setDefaultTemplate(content.getAttributeValue(applicationNamePath + ".defaultTemplate", Locale.ENGLISH));
-      application.setErrorActionForward(content.getAttributeValue(applicationNamePath + ".errorActionForward", Locale.ENGLISH));
       application.setRoles(content.getAttributeValues(applicationNamePath + ".role", Locale.ENGLISH));
       application.setSessionIdCookieName(content.getAttributeValue(applicationNamePath + ".sessionIdCookieName", Locale.ENGLISH));
       application.setSessionIdCookiePath(content.getAttributeValue(applicationNamePath + ".sessionIdCookiePath", Locale.ENGLISH));
-      if (application.getActionPrefix() == null || application.getActionPath() == null || application.getDefaultAction() == null || application.getErrorActionForward() == null
-          || application.getRoles() == null || application.getSessionIdCookieName() == null || application.getSessionIdCookiePath() == null) {
+      if (application.getActionPrefix() == null || application.getActionPath() == null || application.getDefaultAction() == null || application.getRoles() == null || application.getSessionIdCookieName() == null || application.getSessionIdCookiePath() == null) {
 
-        logMsg = "Application Setting - actionPrefix, viewPath, templatePath, defaultAction, errorActionForward, role, sessionIdCookieName, sessionIdCookiePath, and/or resourceFileClasspath not defined in DS Registry content.";
+        logMsg = "Application Setting - actionPrefix, viewPath, templatePath, defaultAction, role, sessionIdCookieName, sessionIdCookiePath, and/or resourceFileClasspath not defined in DS Registry content.";
         log.debug(LOG_CATEGORY, "ApplicationSetting - readApplicationSettingsFromContent" + logMsg);
       }
 

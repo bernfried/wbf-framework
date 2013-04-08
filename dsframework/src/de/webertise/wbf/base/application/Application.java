@@ -46,11 +46,6 @@ public class Application {
   private String                           defaultTemplate     = "";
 
   /**
-   * Holds the action forward for a general error page
-   */
-  private String                           errorActionForward  = "";
-
-  /**
    * Holds the required Delivery Server role for this application
    */
   private String[]                         roles               = null;
@@ -102,10 +97,6 @@ public class Application {
     return this.defaultTemplate;
   }
 
-  public String getErrorActionForward() {
-    return this.errorActionForward;
-  }
-
   public String[] getRoles() {
     return this.roles;
   }
@@ -151,10 +142,6 @@ public class Application {
 
   public void setDefaultAction(String defaultAction) {
     this.defaultAction = defaultAction;
-  }
-
-  public void setErrorActionForward(String errorActionForward) {
-    this.errorActionForward = errorActionForward;
   }
 
   public void setActionMapping(ActionMapping actionMapping) {
